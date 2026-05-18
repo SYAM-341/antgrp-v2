@@ -5,32 +5,38 @@ export default function Capabilities() {
   const capabilities = [
     {
       title: "Test Automation",
-      description: "End-to-end automated testing solutions for web and mobile applications",
+      description:
+        "End-to-end automated testing solutions for web and mobile applications",
     },
     {
       title: "Performance Testing",
-      description: "Load, stress, and spike testing to ensure optimal application performance",
+      description:
+        "Load, stress, and spike testing to ensure optimal application performance",
     },
     {
       title: "API Testing",
-      description: "Comprehensive REST API testing with automation and performance analysis",
+      description:
+        "Comprehensive REST API testing with automation and performance analysis",
     },
     {
       title: "CI/CD Integration",
-      description: "Seamless integration with Jenkins, Azure DevOps, and cloud platforms",
+      description:
+        "Seamless integration with Jenkins, Azure DevOps, and cloud platforms",
     },
     {
       title: "Quality Assurance",
-      description: "Manual and automated QA across multiple domains and tech stacks",
+      description:
+        "Manual and automated QA across multiple domains and tech stacks",
     },
     {
       title: "Cloud Testing",
-      description: "AWS and Azure cloud-based testing infrastructure and solutions",
+      description:
+        "AWS and Azure cloud-based testing infrastructure and solutions",
     },
   ];
 
   return (
-    <Section title="Our Capabilities" subtitle="What we offer">
+    <Section title="Our Capabilities" eyebrow="What we offer">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {capabilities.map((cap) => (
