@@ -14,7 +14,7 @@ export default function Hero() {
           {/* Left Content */}
           <div className="z-10">
             <div className="mb-8">
-              <Badge label="ACTIVELY HIRING" variant="accent" />
+              <Badge variant="accent">label="ACTIVELY HIRING"</Badge>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4 leading-tight">
