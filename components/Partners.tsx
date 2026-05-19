@@ -12,7 +12,7 @@ export default function Partners() {
   ];
 
   return (
-    <Section title="Technology Partners" subtitle="Tools and platforms we work with">
+    <Section title="Technology Partners" eyebrow="Tools and platforms we work with">
       <Container>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
           {partners.map((partner) => (
