@@ -1,53 +1,63 @@
 import Container from "@/components/Container";
 import Section from "@/components/Section";
 
-export default function Capabilities() {
-  const capabilities = [
-    {
-      title: "Test Automation",
-      description:
-        "End-to-end automated testing solutions for web and mobile applications",
-    },
-    {
-      title: "Performance Testing",
-      description:
-        "Load, stress, and spike testing to ensure optimal application performance",
-    },
-    {
-      title: "API Testing",
-      description:
-        "Comprehensive REST API testing with automation and performance analysis",
-    },
-    {
-      title: "CI/CD Integration",
-      description:
-        "Seamless integration with Jenkins, Azure DevOps, and cloud platforms",
-    },
-    {
-      title: "Quality Assurance",
-      description:
-        "Manual and automated QA across multiple domains and tech stacks",
-    },
-    {
-      title: "Cloud Testing",
-      description:
-        "AWS and Azure cloud-based testing infrastructure and solutions",
-    },
-  ];
+const capabilities = [
+  {
+    title: "AI/ML Engineering",
+    description:
+      "Machine learning models, large language models, computer vision solutions, and AI-powered applications for modern enterprises.",
+  },
+  {
+    title: "Full-Stack Development",
+    description:
+      "End-to-end application development with modern web technologies, APIs, and cloud-native architectures for scalable solutions.",
+  },
+  {
+    title: "Cloud Architecture & Migration",
+    description:
+      "Design and implement scalable cloud solutions on AWS, Azure, and GCP. Multi-cloud strategies for enterprises.",
+  },
+  {
+    title: "DevOps & Infrastructure",
+    description:
+      "CI/CD pipelines, infrastructure-as-code, containerization (Docker, Kubernetes), and automated deployment systems.",
+  },
+  {
+    title: "Data Engineering & Analytics",
+    description:
+      "ETL pipelines, data warehousing, real-time analytics, and big data solutions for data-driven decision making.",
+  },
+  {
+    title: "Mobile Development",
+    description:
+      "Native and cross-platform mobile apps (iOS, Android, React Native) built for performance and user experience.",
+  },
+  {
+    title: "Solutions Architecture",
+    description:
+      "Enterprise solution design, system integration, and technical strategy consulting for complex business challenges.",
+  },
+  {
+    title: "Team Augmentation",
+    description:
+      "Flexible engineering teams for projects of any scale. Dedicated developers, architects, and technical leads.",
+  },
+];
 
+export default function Capabilities() {
   return (
-    <Section title="Our Capabilities" eyebrow="What we offer">
+    <Section title="Our Capabilities" eyebrow="WHAT WE OFFER">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {capabilities.map((cap) => (
             <div
               key={cap.title}
-              className="p-6 rounded-lg border border-slate-200 hover:border-brand hover:shadow-md transition"
+              className="rounded-lg border border-slate-200 p-6 hover:border-brand-2 hover:shadow-md transition duration-300 bg-white"
             >
-              <h3 className="text-lg font-semibold mb-3 text-slate-900">
+              <h3 className="text-lg font-semibold text-slate-900 mb-3">
                 {cap.title}
               </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-sm text-slate-600 leading-relaxed">
                 {cap.description}
               </p>
             </div>
