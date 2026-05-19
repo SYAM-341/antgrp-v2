@@ -7,10 +7,11 @@ export default function CTA() {
       <Container>
         <div className="text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Elevate Your QA?
+            Ready to Build Your Team?
           </h2>
           <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-            Let's discuss how our expertise can improve your testing and QA processes.
+            Let's discuss how we can augment your team with experienced
+            engineers across cloud, data, AI/ML, and modern tech stacks.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
