@@ -22,7 +22,7 @@ export default function Principles() {
   ];
 
   return (
-    <Section title="Our Principles" subtitle="The foundation of our work">
+    <Section title="Our Principles" eyebrow="The foundation of our work">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {principles.map((principle) => (
