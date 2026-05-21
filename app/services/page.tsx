@@ -4,40 +4,60 @@ import Link from "next/link";
 
 const services = [
   {
-    title: "Test Automation",
+    title: "AI/ML Engineering",
     description:
-      "End-to-end automated testing solutions for web and mobile applications using Selenium, Playwright, and Appium.",
+      "Machine learning models, large language models, computer vision solutions, and AI-powered applications for modern enterprises.",
     icon: "🤖",
+    link: "/services/ai-ml",
   },
   {
-    title: "Performance Testing",
+    title: "Full-Stack Development",
     description:
-      "Load, stress, spike, and soak testing with JMeter. We ensure your applications handle real-world traffic.",
-    icon: "⚡",
+      "End-to-end application development with modern web technologies, APIs, and cloud-native architectures for scalable solutions.",
+    icon: "💻",
+    link: "/services/full-stack-development",
   },
   {
-    title: "API Testing",
+    title: "Cloud Architecture & Migration",
     description:
-      "Comprehensive REST API testing with REST Assured, Postman, and custom automation frameworks.",
-    icon: "🔌",
-  },
-  {
-    title: "CI/CD Integration",
-    description:
-      "Seamless integration with Jenkins, Azure DevOps, GitHub Actions, and cloud platforms.",
-    icon: "🔄",
-  },
-  {
-    title: "QA Strategy & Consulting",
-    description:
-      "Strategic guidance on test planning, coverage, frameworks, and quality metrics for your team.",
-    icon: "📊",
-  },
-  {
-    title: "Cloud Testing",
-    description:
-      "Testing infrastructure on AWS, Azure, and Google Cloud with scalable, secure environments.",
+      "Design and implement scalable cloud solutions on AWS, Azure, and GCP. Multi-cloud strategies for enterprises.",
     icon: "☁️",
+    link: "/services/cloud-architecture",
+  },
+  {
+    title: "DevOps & Infrastructure",
+    description:
+      "CI/CD pipelines, infrastructure-as-code, containerization (Docker, Kubernetes), and automated deployment systems.",
+    icon: "🔧",
+    link: "/services/devops-infrastructure",
+  },
+  {
+    title: "Data Engineering & Analytics",
+    description:
+      "ETL pipelines, data warehousing, real-time analytics, and big data solutions for data-driven decision making.",
+    icon: "📊",
+    link: "/services/data-engineering",
+  },
+  {
+    title: "Mobile Development",
+    description:
+      "Native and cross-platform mobile apps (iOS, Android, React Native) built for performance and user experience.",
+    icon: "📱",
+    link: "/services/mobile-development",
+  },
+  {
+    title: "Solutions Architecture",
+    description:
+      "Enterprise solution design, system integration, and technical strategy consulting for complex business challenges.",
+    icon: "🏗️",
+    link: "/services/solutions-architecture",
+  },
+  {
+    title: "Team Augmentation",
+    description:
+      "Flexible engineering teams for projects of any scale. Dedicated developers, architects, and technical leads.",
+    icon: "👥",
+    link: "/services/team-augmentation",
   },
 ];
 
@@ -48,52 +68,28 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="What we"
         accent="offer."
-        description="Comprehensive QA and testing services tailored to your needs. From automation to performance testing, we have expertise across all domains."
+        description="Comprehensive engineering services tailored to your needs. From AI/ML to team augmentation, we have expertise across all modern tech stacks."
       />
 
       <section className="py-20 md:py-28">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service) => (
-              <div
-                key={service.title}
-                className="group rounded-2xl border border-slate-200 p-8 hover:border-brand hover:shadow-lg transition duration-300 bg-white"
-              >
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-brand transition">
-                  {service.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                  {service.description}
-                </p>
-                <Link
-                  href="/contact"
-                  className="text-sm font-semibold text-brand hover:text-brand-2 transition inline-flex items-center"
-                >
-                  Learn more →
-                </Link>
-              </div>
+              <Link key={service.title} href={service.link}>
+                <div className="rounded-lg border border-slate-200 p-6 hover:border-brand-2 hover:shadow-lg transition duration-300 bg-white cursor-pointer h-full flex flex-col">
+                  <div className="text-4xl mb-4">{service.icon}</div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">
+                    {service.description}
+                  </p>
+                  <span className="text-brand font-semibold hover:text-brand-2 transition text-sm">
+                    Learn more →
+                  </span>
+                </div>
+              </Link>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-slate-50 py-16 md:py-24">
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-              Ready to improve your QA?
-            </h2>
-            <p className="text-lg text-slate-600 mb-8">
-              Let's discuss how our services can enhance your testing and quality
-              assurance processes.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand text-white font-semibold hover:bg-brand-3 transition"
-            >
-              Get in touch →
-            </Link>
           </div>
         </Container>
       </section>
