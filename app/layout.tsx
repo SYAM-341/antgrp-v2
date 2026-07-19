@@ -1,31 +1,21 @@
 import "./globals.css";
+// Self-hosted variable font — no runtime dependency on external font CDNs,
+// so builds succeed offline and visitors' browsers make no third-party
+// font requests.
+import "@fontsource-variable/manrope/index.css";
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const instrument = Instrument_Serif({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-instrument",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "AntGRP — Engineering Teams. Delivered.",
+  title: "AntGRP — IT Consulting & Technology Staffing",
   description:
-    "AntGRP is an American-owned professional services organization delivering enterprise-grade solutions across diverse industry sectors with a focus on reliability, compliance, and scale.",
+    "AntGRP provides IT consulting and technology staffing across cloud, data, AI, and enterprise software. Scoped engagements, vetted specialists, and clear accountability.",
   metadataBase: new URL("https://antgrp.com"),
   openGraph: {
-    title: "AntGRP — Engineering Teams. Delivered.",
+    title: "AntGRP — IT Consulting & Technology Staffing",
     description:
-      "AntGRP is an American-owned professional services organization delivering enterprise-grade solutions across diverse industry sectors.",
+      "IT consulting and technology staffing across cloud, data, AI, and enterprise software. Scoped engagements, vetted specialists, and clear accountability.",
     url: "https://antgrp.com",
     siteName: "AntGRP",
     type: "website",
@@ -37,7 +27,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrument.variable}`}>
+    <html lang="en">
       <body className="min-h-screen flex flex-col bg-white text-ink antialiased">
         <Nav />
         <main className="flex-1">{children}</main>

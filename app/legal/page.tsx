@@ -15,13 +15,13 @@ export default function LegalPage() {
         <Container size="narrow">
           <div className="space-y-12">
             <div>
-              <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-mute">
                 Disclaimer
               </div>
               <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
                 Informational only.
               </h2>
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-zinc-700">
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-mute">
                 <p>
                   This website is provided for general informational purposes
                   only. It does not constitute legal, tax, financial, or
@@ -35,14 +35,14 @@ export default function LegalPage() {
               </div>
             </div>
 
-            <div className="border-t border-zinc-200 pt-12">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+            <div className="border-t border-line pt-12">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.16em] text-mute">
                 Privacy
               </div>
               <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
                 Privacy note.
               </h2>
-              <div className="mt-5 space-y-4 text-base leading-relaxed text-zinc-700">
+              <div className="mt-5 space-y-4 text-base leading-relaxed text-mute">
                 <p>
                   This site does not intentionally collect sensitive personal
                   information. If you email us, we will use your message only
@@ -55,7 +55,7 @@ export default function LegalPage() {
               </div>
             </div>
 
-            <div className="border-t border-zinc-200 pt-12 text-sm text-zinc-500">
+            <div className="border-t border-line pt-12 text-sm text-mute">
               For questions about this notice, email{" "}
               <a
                 className="font-semibold text-ink underline"

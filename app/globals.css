@@ -1,22 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0a0a0a;
-  --color-ink-2: #111114;
-  --color-ink-3: #1a1a1f;
-  --color-navy: #0b1220;
-  --color-navy-2: #111a30;
-  --color-line: #e5e7eb;
-  --color-line-dark: #1f2937;
-  --color-mute: #6b7280;
-  --color-cream: #fafafa;
-  --color-soft: #f4f6f8;
-  --color-brand: #1d4ed8;
-  --color-brand-2: #2563eb;
-  --color-brand-3: #1e40af;
+  /* Corporate light palette — warm off-white foundation, deep slate text,
+     restrained teal accent. All pairings meet WCAG AA contrast. */
+  --color-ink: #1f2b3a;      /* deep slate — headings, footer background */
+  --color-ink-2: #2a3849;
+  --color-ink-3: #35455a;
+  --color-navy: #22303f;
+  --color-navy-2: #2c3b4d;
+  --color-line: #e6e4df;     /* soft warm hairline */
+  --color-line-dark: #d6d3cc;
+  --color-mute: #545b66;     /* secondary text — 6.8:1 on white */
+  --color-cream: #faf9f6;    /* warm off-white section background */
+  --color-soft: #f3f2ee;     /* soft gray fill */
+  --color-brand: #0f766e;    /* muted teal accent — 5.4:1 on white */
+  --color-brand-2: #0d9488;  /* lighter teal for hover/decorative */
+  --color-brand-3: #115e59;  /* dark teal for hover states */
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: var(--font-instrument), ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 :root {
@@ -28,9 +29,14 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-sans);
-  font-feature-settings: "ss01", "cv11";
+  font-size: 16px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -38,51 +44,15 @@ body {
 
 .font-display {
   font-family: var(--font-sans);
-  font-weight: 600;
-  letter-spacing: -0.035em;
-}
-
-.font-serif-italic {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-/* Subtle dotted background for premium light hero */
-.bg-dots {
-  background-image: radial-gradient(rgba(15, 23, 42, 0.06) 1px, transparent 1px);
-  background-size: 22px 22px;
-}
-
-/* Faint grid for dark sections */
-.bg-grid-dark {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 56px 56px;
-}
-
-.bg-light-glow {
-  background: radial-gradient(60% 60% at 50% 30%, rgba(37, 99, 235, 0.08) 0%, rgba(255, 255, 255, 0) 60%);
-}
-
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-.marquee-track {
-  animation: marquee 40s linear infinite;
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px); }
-  50%      { transform: translateY(-8px); }
-}
-
-.float-slow {
-  animation: float-slow 6s ease-in-out infinite;
+/* Bright section backdrop — warm off-white with a faint teal wash in the
+   upper corner. Replaces the former dark hero/header treatment. */
+.bg-header-light {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(110% 90% at 88% 0%, rgba(15, 118, 110, 0.07) 0%, rgba(250, 249, 246, 0) 55%);
 }
 
 @keyframes pulse-soft {

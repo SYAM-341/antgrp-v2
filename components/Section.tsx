@@ -16,14 +16,14 @@ export default function Section({
 }) {
   const bg =
     variant === "dark"
-      ? "bg-navy text-white"
+      ? "bg-cream text-ink"
       : variant === "cream"
       ? "bg-cream text-ink"
       : "bg-white text-ink";
 
-  const eyebrowColor = variant === "dark" ? "text-brand-2" : "text-brand";
-  const titleColor = variant === "dark" ? "text-white" : "text-ink";
-  const bodyColor = variant === "dark" ? "text-zinc-300" : "text-zinc-700";
+  const eyebrowColor = "text-brand";
+  const titleColor = "text-ink";
+  const bodyColor = "text-mute";
 
   return (
     <section className={clsx("py-20 md:py-24", bg)}>

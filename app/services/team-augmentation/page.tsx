@@ -7,27 +7,30 @@ export default function TeamAugmentationPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        title="Team Augmentation"
-        accent="Services"
-        description="Flexible engineering teams for projects of any scale. Dedicated developers, architects, and technical leads."
+        title="Technology Staffing &"
+        accent="Team Augmentation"
+        description="The right people, matched to your stack, your domain, and your team. Contract, contract-to-hire, and direct placement across every IT discipline."
       />
 
       <section className="py-20 md:py-28">
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
-                Augment Your Engineering Capacity
+              <h2 className="font-display text-3xl text-ink md:text-4xl mb-6">
+                Find the Right Talent, Fast
               </h2>
-              <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-                Scale your team quickly with skilled engineers. Whether you need
-                frontend developers, cloud architects, or full-stack teams, we
-                have the talent you need.
+              <p className="text-lg text-mute mb-4 leading-relaxed">
+                Great teams are built on fit, not just résumés. We vet every
+                consultant for technical depth, domain experience, and how they
+                work with a team — then match them to your technology stack and
+                business context. Whether you need one senior architect, a
+                platform squad, or leadership for a critical initiative, we
+                deliver people who contribute from week one.
               </p>
             </div>
 
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="font-display text-2xl text-ink md:text-3xl mb-8">
                 What We Offer
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -65,12 +68,12 @@ export default function TeamAugmentationPage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="border border-slate-200 rounded-lg p-6 hover:border-brand-2 transition"
+                    className="rounded-2xl border border-line bg-white p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/5"
                   >
-                    <h4 className="text-xl font-semibold text-slate-900 mb-3">
+                    <h4 className="text-xl font-semibold text-ink mb-3">
                       {item.title}
                     </h4>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-mute leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -79,7 +82,7 @@ export default function TeamAugmentationPage() {
             </div>
 
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="font-display text-2xl text-ink md:text-3xl mb-8">
                 Engineering Specialties
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -96,16 +99,16 @@ export default function TeamAugmentationPage() {
                 ].map((specialty) => (
                   <div
                     key={specialty}
-                    className="bg-slate-50 rounded-lg p-4 text-center border border-slate-200"
+                    className="rounded-xl border border-line bg-cream p-4 text-center transition hover:border-brand/40 hover:bg-soft"
                   >
-                    <p className="font-semibold text-slate-900">{specialty}</p>
+                    <p className="font-semibold text-ink">{specialty}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="font-display text-2xl text-ink md:text-3xl mb-8">
                 Key Benefits
               </h3>
               <ul className="space-y-4">
@@ -115,29 +118,29 @@ export default function TeamAugmentationPage() {
                   "Faster project execution with experienced engineers",
                   "Cost-effective compared to permanent hiring",
                   "Flexible engagement models match your needs",
-                  "Seamless integration with your culture and processes",
+                  "Placements matched to your existing culture and processes",
                 ].map((benefit) => (
                   <li key={benefit} className="flex gap-4">
                     <span className="text-brand font-bold flex-shrink-0">
                       ✓
                     </span>
-                    <span className="text-lg text-slate-600">{benefit}</span>
+                    <span className="text-lg text-mute">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-lg bg-blue-50 border border-blue-200 p-12 text-center">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-3 to-brand p-12 text-center md:p-16">
+              <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
                 Scale Your Engineering Team
               </h2>
-              <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-                Let's discuss how we can augment your team with skilled
+              <p className="mx-auto mb-8 max-w-2xl text-white/90">
+                Let&apos;s discuss how we can augment your team with skilled
                 engineers.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand text-white font-semibold hover:bg-brand-3 transition"
+                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 font-semibold text-brand-3 transition hover:bg-cream"
               >
                 Request Team Augmentation
               </Link>

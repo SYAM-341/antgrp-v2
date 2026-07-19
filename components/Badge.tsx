@@ -9,10 +9,10 @@ export default function Badge({
 }) {
   const styles =
     variant === "dark"
-      ? "border-line-dark bg-navy-2 text-zinc-200"
+      ? "border-line bg-soft text-ink"
       : variant === "accent"
       ? "border-brand/40 bg-brand-2/10 text-brand-3"
-      : "border-line bg-soft text-zinc-700";
+      : "border-line bg-soft text-mute";
   return (
     <span
       className={clsx(

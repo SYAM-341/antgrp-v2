@@ -1,63 +1,67 @@
 import Link from "next/link";
 import Container from "@/components/Container";
+import { LogoMark } from "@/components/Logo";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-white via-slate-50 to-white overflow-hidden">
-      {/* Ambient orbs */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-brand/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-32 left-20 w-96 h-96 bg-blue-500/3 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-header-light border-b border-line">
+      {/* Subtle brand mark, cropped at the edge */}
+      <LogoMark
+        color="rgba(15, 118, 110, 0.07)"
+        className="pointer-events-none absolute -bottom-24 right-[4%] hidden h-[480px] w-[480px] md:block"
+      />
 
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
-          {/* Left Content */}
-          <div className="z-10">
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4 leading-tight">
-              Engineering
+      <Container size="wide">
+        <div className="relative z-10 grid grid-cols-1 items-center gap-12 py-20 md:py-28 lg:grid-cols-2">
+          <div>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-mute">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand" />
+              IT Consulting &amp; Technology Staffing
+            </div>
+
+            <h1 className="font-display text-4xl leading-[1.1] text-ink md:text-5xl lg:text-6xl">
+              The right people for
               <br />
-              Teams.
-              <span className="block text-brand italic font-serif text-5xl md:text-6xl">
-                Delivered.
-              </span>
+              <span className="text-brand">the right problems.</span>
             </h1>
 
-            <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-lg">
-              AntGRP builds high-performing engineering squads and delivers
-              cloud, data, and platform programs for organizations that move
-              fast.
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-mute">
+              AntGRP provides IT consulting and technology staffing across
+              cloud, data, AI, and enterprise software. We scope the problem
+              first, then bring the specialists and solutions to solve it —
+              with clear terms and named accountability on every engagement.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3 text-sm font-semibold text-white hover:bg-brand-3 transition shadow-sm"
+                className="inline-flex items-center justify-center rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-3"
               >
-                Start a project
+                Get in Touch
                 <span aria-hidden className="ml-2">
                   →
                 </span>
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-8 py-3 text-sm font-semibold text-slate-900 hover:border-slate-400 hover:bg-slate-50 transition"
+                className="inline-flex items-center justify-center rounded-full border border-line-dark bg-white px-8 py-3.5 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
               >
-                Explore services
+                Explore Services
               </Link>
             </div>
-          </div>
 
-          {/* Right Orb */}
-          <div className="relative h-96 lg:h-full flex items-center justify-center">
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-64 h-64 lg:w-80 lg:h-80 bg-gradient-to-br from-brand/20 to-blue-300/10 rounded-full blur-2xl" />
-            </div>
-            <div className="relative w-56 h-56 lg:w-72 lg:h-72 rounded-full bg-white border-2 border-slate-100 flex items-center justify-center shadow-xl">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-brand mb-2">A</div>
-                <div className="text-xs uppercase tracking-widest text-slate-500">
-                  AntGRP
+            <div className="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-8 sm:grid-cols-2">
+              {[
+                "Engagements scoped and priced before work begins",
+                "Specialists vetted for skill and domain experience",
+                "Written status reporting on a regular cadence",
+                "A named engagement owner, start to finish",
+              ].map((s) => (
+                <div key={s} className="flex items-start gap-2.5">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
+                  <span className="text-sm leading-snug text-mute">{s}</span>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

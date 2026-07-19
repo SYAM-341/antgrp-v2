@@ -1,5 +1,4 @@
 import Hero from "@/components/Hero";
-import Stats from "@/components/Stats";
 import Capabilities from "@/components/Capabilities";
 import Sectors from "@/components/Sectors";
 import Partners from "@/components/Partners";
@@ -10,7 +9,6 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
       <Capabilities />
       <Sectors />
       <Partners />

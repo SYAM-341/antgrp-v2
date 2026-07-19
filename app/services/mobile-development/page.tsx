@@ -7,8 +7,8 @@ export default function MobileDevelopmentPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        title="Mobile Development"
-        accent="Services"
+        title="Mobile"
+        accent="Development"
         description="Native and cross-platform mobile apps (iOS, Android, React Native) built for performance and user experience."
       />
 
@@ -16,18 +16,18 @@ export default function MobileDevelopmentPage() {
         <Container>
           <div className="max-w-4xl mx-auto">
             <div className="mb-16">
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">
+              <h2 className="font-display text-3xl text-ink md:text-4xl mb-6">
                 Enterprise Mobile Solutions
               </h2>
-              <p className="text-lg text-slate-600 mb-4 leading-relaxed">
+              <p className="text-lg text-mute mb-4 leading-relaxed">
                 We build high-performance mobile applications for iOS and
-                Android. From native to cross-platform, we deliver mobile
-                excellence.
+                Android — native or cross-platform, with a consistent focus
+                on stability, speed, and a well-considered user experience.
               </p>
             </div>
 
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="font-display text-2xl text-ink md:text-3xl mb-8">
                 What We Deliver
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -50,7 +50,7 @@ export default function MobileDevelopmentPage() {
                   {
                     title: "Mobile UI/UX Design",
                     description:
-                      "Design intuitive, beautiful mobile interfaces optimized for user experience.",
+                      "Design clear, intuitive mobile interfaces optimized for usability and performance.",
                   },
                   {
                     title: "Backend Integration",
@@ -65,12 +65,12 @@ export default function MobileDevelopmentPage() {
                 ].map((item) => (
                   <div
                     key={item.title}
-                    className="border border-slate-200 rounded-lg p-6 hover:border-brand-2 transition"
+                    className="rounded-2xl border border-line bg-white p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/5"
                   >
-                    <h4 className="text-xl font-semibold text-slate-900 mb-3">
+                    <h4 className="text-xl font-semibold text-ink mb-3">
                       {item.title}
                     </h4>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-mute leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -79,7 +79,7 @@ export default function MobileDevelopmentPage() {
             </div>
 
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="font-display text-2xl text-ink md:text-3xl mb-8">
                 Technologies & Platforms
               </h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -96,16 +96,16 @@ export default function MobileDevelopmentPage() {
                 ].map((tech) => (
                   <div
                     key={tech}
-                    className="bg-slate-50 rounded-lg p-4 text-center border border-slate-200"
+                    className="rounded-xl border border-line bg-cream p-4 text-center transition hover:border-brand/40 hover:bg-soft"
                   >
-                    <p className="font-semibold text-slate-900">{tech}</p>
+                    <p className="font-semibold text-ink">{tech}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="mb-16">
-              <h3 className="text-2xl font-bold text-slate-900 mb-8">
+              <h3 className="font-display text-2xl text-ink md:text-3xl mb-8">
                 Key Benefits
               </h3>
               <ul className="space-y-4">
@@ -121,22 +121,22 @@ export default function MobileDevelopmentPage() {
                     <span className="text-brand font-bold flex-shrink-0">
                       ✓
                     </span>
-                    <span className="text-lg text-slate-600">{benefit}</span>
+                    <span className="text-lg text-mute">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-lg bg-blue-50 border border-blue-200 p-12 text-center">
-              <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-3 to-brand p-12 text-center md:p-16">
+              <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
                 Build Your Mobile App
               </h2>
-              <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
-                Let's create an engaging mobile experience for your users.
+              <p className="mx-auto mb-8 max-w-2xl text-white/90">
+                Let&apos;s create an engaging mobile experience for your users.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-brand text-white font-semibold hover:bg-brand-3 transition"
+                className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 font-semibold text-brand-3 transition hover:bg-cream"
               >
                 Start Mobile Project
               </Link>

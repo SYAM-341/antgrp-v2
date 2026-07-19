@@ -1,63 +1,62 @@
 import Container from "@/components/Container";
 import PageHeader from "@/components/PageHeader";
+import CTA from "@/components/CTA";
 import Link from "next/link";
+
+export const metadata = {
+  title: "Services — AntGRP",
+  description:
+    "IT consulting, technology staffing, and delivery services across cloud, data, AI, software engineering, and enterprise platforms.",
+};
 
 const services = [
   {
-    title: "AI/ML Engineering",
+    title: "Technology Staffing",
     description:
-      "Machine learning models, large language models, computer vision solutions, and AI-powered applications for modern enterprises.",
-    icon: "🤖",
-    link: "/services/ai-ml",
-  },
-  {
-    title: "Full-Stack Development",
-    description:
-      "End-to-end application development with modern web technologies, APIs, and cloud-native architectures for scalable solutions.",
-    icon: "💻",
-    link: "/services/full-stack-development",
-  },
-  {
-    title: "Cloud Architecture & Migration",
-    description:
-      "Design and implement scalable cloud solutions on AWS, Azure, and GCP. Multi-cloud strategies for enterprises.",
-    icon: "☁️",
-    link: "/services/cloud-architecture",
-  },
-  {
-    title: "DevOps & Infrastructure",
-    description:
-      "CI/CD pipelines, infrastructure-as-code, containerization (Docker, Kubernetes), and automated deployment systems.",
-    icon: "🔧",
-    link: "/services/devops-infrastructure",
-  },
-  {
-    title: "Data Engineering & Analytics",
-    description:
-      "ETL pipelines, data warehousing, real-time analytics, and big data solutions for data-driven decision making.",
-    icon: "📊",
-    link: "/services/data-engineering",
-  },
-  {
-    title: "Mobile Development",
-    description:
-      "Native and cross-platform mobile apps (iOS, Android, React Native) built for performance and user experience.",
-    icon: "📱",
-    link: "/services/mobile-development",
+      "Vetted consultants, engineers, and technical leads matched to your stack and culture. Contract, contract-to-hire, and direct placement across every IT discipline.",
+    link: "/services/team-augmentation",
   },
   {
     title: "Solutions Architecture",
     description:
-      "Enterprise solution design, system integration, and technical strategy consulting for complex business challenges.",
-    icon: "🏗️",
+      "Enterprise solution design, system integration, and technology strategy consulting for complex business challenges.",
     link: "/services/solutions-architecture",
   },
   {
-    title: "Team Augmentation",
+    title: "Cloud Architecture & Migration",
     description:
-      "Flexible engineering teams for projects of any scale. Dedicated developers, architects, and technical leads.",
-    icon: "👥",
-    link: "/services/team-augmentation",
+      "Design and implement scalable cloud solutions on AWS, Azure, and GCP. Migration, modernization, and multi-cloud strategy for enterprises.",
+    link: "/services/cloud-architecture",
+  },
+  {
+    title: "AI/ML Engineering",
+    description:
+      "Machine learning models, large language models, computer vision, and AI-powered applications — from pilot to production.",
+    link: "/services/ai-ml",
+  },
+  {
+    title: "Data Engineering & Analytics",
+    description:
+      "ETL pipelines, data warehousing, real-time analytics, and big data platforms for data-driven decision making.",
+    link: "/services/data-engineering",
+  },
+  {
+    title: "Full-Stack Development",
+    description:
+      "End-to-end application development with modern web technologies, APIs, and cloud-native architectures.",
+    link: "/services/full-stack-development",
+  },
+  {
+    title: "DevOps & Infrastructure",
+    description:
+      "CI/CD pipelines, infrastructure-as-code, containerization, and automated deployment systems that keep delivery reliable.",
+    link: "/services/devops-infrastructure",
+  },
+  {
+    title: "Mobile Development",
+    description:
+      "Native and cross-platform mobile apps for iOS and Android, built for performance, security, and user experience.",
+    link: "/services/mobile-development",
   },
 ];
 
@@ -66,33 +65,36 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        title="What we"
-        accent="offer."
-        description="Comprehensive engineering services tailored to your needs. From AI/ML to team augmentation, we have expertise across all modern tech stacks."
+        title="Consulting, staffing,"
+        accent="and delivery."
+        description="Eight services covering cloud, data, AI, and enterprise software. Each one runs on the same engagement model: a written scope, vetted people, and a named owner."
       />
 
       <section className="py-20 md:py-28">
-        <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <Container size="wide">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
-              <Link key={service.title} href={service.link}>
-                <div className="rounded-lg border border-slate-200 p-6 hover:border-brand-2 hover:shadow-lg transition duration-300 bg-white cursor-pointer h-full flex flex-col">
-                  <div className="text-4xl mb-4">{service.icon}</div>
-                  <h3 className="text-lg font-bold text-slate-900 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 mb-6 leading-relaxed flex-grow">
-                    {service.description}
-                  </p>
-                  <span className="text-brand font-semibold hover:text-brand-2 transition text-sm">
-                    Learn more →
-                  </span>
-                </div>
+              <Link
+                key={service.title}
+                href={service.link}
+                className="group flex h-full flex-col rounded-2xl border border-line bg-white p-6 transition duration-300 hover:-translate-y-0.5 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/5"
+              >
+                <h3 className="mb-3 text-lg font-bold text-ink transition group-hover:text-brand">
+                  {service.title}
+                </h3>
+                <p className="mb-6 flex-grow text-sm leading-relaxed text-mute">
+                  {service.description}
+                </p>
+                <span className="text-sm font-semibold text-brand">
+                  Learn more <span aria-hidden>→</span>
+                </span>
               </Link>
             ))}
           </div>
         </Container>
       </section>
+
+      <CTA />
     </>
   );
 }

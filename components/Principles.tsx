@@ -1,46 +1,57 @@
 import Container from "@/components/Container";
-import Section from "@/components/Section";
 
 export default function Principles() {
   const principles = [
     {
-      title: "Quality First",
+      title: "Fit over volume",
       description:
-        "Delivering the highest quality assurance and testing standards",
+        "We present one well-matched candidate or one workable architecture, not a long list of possibilities. Every recommendation is checked against your stack, your domain, and your team.",
     },
     {
-      title: "Continuous Improvement",
+      title: "Documented delivery",
       description:
-        "Always evolving our processes and methodologies for better results",
+        "Statements of work, written status updates, and recorded decisions on every engagement — so progress is visible and commitments are auditable.",
     },
     {
-      title: "Expertise & Knowledge",
+      title: "Domain experience",
       description:
-        "Deep domain expertise across healthcare, banking, telecom, and eCommerce",
+        "Healthcare, finance, telecom, retail, insurance, and SaaS. The people we place and the consultants we field have worked inside the regulatory and technical constraints of these markets.",
     },
     {
-      title: "Client-Centric",
+      title: "Repeat relationships",
       description:
-        "Your success is our success - we align with your business goals",
+        "We measure success by whether clients return for the next hire or the next project, and we structure engagements accordingly.",
     },
   ];
 
   return (
-    <Section title="Our Principles" eyebrow="The foundation of our work">
-      <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <section className="border-t border-line bg-cream py-20 md:py-28">
+      <Container size="wide">
+        <div className="max-w-2xl">
+          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand">
+            How we work
+          </div>
+          <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
+            Four working principles.
+          </h2>
+        </div>
+
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
           {principles.map((principle) => (
-            <div key={principle.title} className="flex gap-4">
+            <div key={principle.title} className="flex gap-5">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 rounded-full bg-brand text-white flex items-center justify-center font-bold">
+                <div
+                  aria-hidden
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-brand text-white"
+                >
                   ✓
                 </div>
               </div>
               <div>
-                <h3 className="font-semibold text-slate-900 mb-2">
+                <h3 className="mb-2 text-lg font-semibold text-ink">
                   {principle.title}
                 </h3>
-                <p className="text-slate-600 text-sm">
+                <p className="text-sm leading-relaxed text-mute">
                   {principle.description}
                 </p>
               </div>
@@ -48,6 +59,6 @@ export default function Principles() {
           ))}
         </div>
       </Container>
-    </Section>
+    </section>
   );
 }

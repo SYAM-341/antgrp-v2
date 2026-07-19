@@ -1,276 +1,130 @@
-╔═══════════════════════════════════════════════════════════════════════════════╗
-║                                                                               ║
-║                    ANTGRP WEBSITE v2.1 - FINAL TESTING REPORT                ║
-║                                                                               ║
-║                           ✅ ALL CHECKS PASSED ✅                            ║
-║                                                                               ║
-╚═══════════════════════════════════════════════════════════════════════════════╝
-
-📋 COMPREHENSIVE AUDIT RESULTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ COMPONENT VERIFICATION
-────────────────────────────────────────────────────────────────────────────
-
-All required components exist and are imported correctly:
-
-✅ Badge.tsx                   - Badge component for labels
-✅ CTA.tsx                     - Call-to-action section
-✅ Capabilities.tsx            - Services showcase
-✅ Container.tsx               - Layout wrapper
-✅ Footer.tsx                  - Footer with links
-✅ Hero.tsx                    - Hero section with CTA
-✅ Nav.tsx                     - Navigation bar
-✅ PageHeader.tsx              - Page header component (NEWLY ADDED)
-✅ Partners.tsx                - Technology partners
-✅ Principles.tsx              - Company principles
-✅ Section.tsx                 - Section wrapper
-✅ Sectors.tsx                 - Industries section
-✅ Stats.tsx                   - Statistics section
-
-Total Components: 13 ✅
-All imports resolve correctly: ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ PAGE VERIFICATION
-────────────────────────────────────────────────────────────────────────────
-
-All pages exist and are functional:
-
-✅ / (Homepage)                - app/page.tsx
-✅ /about                      - app/about/page.tsx
-✅ /contact                    - app/contact/page.tsx
-✅ /legal                      - app/legal/page.tsx
-✅ /services                   - app/services/page.tsx (NEWLY ADDED)
-✅ /industries                 - app/industries/page.tsx (NEWLY ADDED)
-
-Total Pages: 6 ✅
-All pages load without errors: ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ CTA BUTTON & LINK TESTING
-────────────────────────────────────────────────────────────────────────────
-
-Navigation Links Verified:
-
-HERO SECTION:
-  ✅ "Start a project" button          → /contact (WORKS)
-  ✅ "See our services" button         → /services (WORKS)
-
-CTA COMPONENT:
-  ✅ "Get Started" button              → /contact (WORKS)
-  ✅ "Learn More" button               → /about (WORKS)
-
-ABOUT PAGE:
-  ✅ "Let's work together" button      → /contact (WORKS)
-
-SECTORS SECTION:
-  ✅ "Learn more" links                → /industries (WORKS)
-
-FOOTER:
-  ✅ Logo link                         → / (home) (WORKS)
-  ✅ Legal links                       → /legal (WORKS)
-
-Total Links Tested: 9 ✅
-All links pointing to existing pages: ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ CONFIGURATION VERIFICATION
-────────────────────────────────────────────────────────────────────────────
-
-Required Files Present:
-
-✅ package.json               - Dependencies configured
-✅ tsconfig.json              - TypeScript configured
-✅ next.config.ts             - Next.js config with allowedDevOrigins
-✅ tailwind.config.ts         - Tailwind CSS with brand colors
-✅ postcss.config.mjs         - PostCSS configured
-✅ eslint.config.mjs          - ESLint configured
-✅ .gitignore                 - Git ignore rules set
-
-Build Configuration: ✅ READY
-Development Config: ✅ READY
-Production Config: ✅ READY
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ UTILITY & LIBRARY VERIFICATION
-────────────────────────────────────────────────────────────────────────────
-
-✅ lib/clsx.ts                - Class utility function present and working
-
-Used by: Container.tsx and other components
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ STYLING & BRANDING VERIFICATION
-────────────────────────────────────────────────────────────────────────────
-
-Colors Configured:
-  ✅ brand: #1d4ed8           - Primary blue
-  ✅ brand-2: #2563eb         - Secondary blue
-  ✅ brand-3: #1e40af         - Dark blue
-  ✅ ink: #0a0a0a             - Text color
-  ✅ cream: #fafafa           - Background
-  ✅ soft: #f4f6f8            - Soft background
-
-Fonts Configured:
-  ✅ Inter                     - Sans-serif font
-  ✅ Instrument Serif          - Serif font
-
-CSS Styling: ✅ COMPLETE
-Tailwind Setup: ✅ COMPLETE
-Brand Colors: ✅ COMPLETE
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ RESPONSIVE DESIGN VERIFICATION
-────────────────────────────────────────────────────────────────────────────
-
-Breakpoints Implemented:
-  ✅ Mobile (< 768px)         - Full width responsive
-  ✅ Tablet (768px - 1024px)  - Grid adjustments
-  ✅ Desktop (> 1024px)       - Full layout
-
-Components Tested for Responsiveness:
-  ✅ Navigation bar           - Mobile menu support
-  ✅ Hero section             - Responsive typography
-  ✅ Grid layouts             - Column adjustments
-  ✅ Forms                     - Mobile-friendly inputs
-
-Responsive Design: ✅ COMPLETE
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ WORKFLOW TESTING
-────────────────────────────────────────────────────────────────────────────
-
-User Journey 1: Homepage → Contact
-  Step 1: Visit homepage              ✅ Loads
-  Step 2: Click "Start a project"     ✅ Goes to /contact
-  Step 3: See contact form            ✅ Form displays
-  Result: ✅ WORKS
-
-User Journey 2: Homepage → Services
-  Step 1: Visit homepage              ✅ Loads
-  Step 2: Click "See our services"    ✅ Goes to /services
-  Step 3: See service cards           ✅ All 6 services display
-  Step 4: Click "Learn more"          ✅ Goes to /contact
-  Result: ✅ WORKS
-
-User Journey 3: Homepage → Industries
-  Step 1: Visit homepage              ✅ Loads
-  Step 2: Click industry card         ✅ Goes to /industries
-  Step 3: See all 6 industries        ✅ Industries display
-  Step 4: Click CTA button            ✅ Goes to /contact
-  Result: ✅ WORKS
-
-User Journey 4: CTA Section
-  Step 1: Scroll to CTA section       ✅ Displays
-  Step 2: Click "Get Started"         ✅ Goes to /contact
-  Step 3: Click "Learn More"          ✅ Goes to /about
-  Result: ✅ WORKS
-
-User Journey 5: Navigation Bar
-  Step 1: Click logo                  ✅ Goes to home
-  Step 2: Click contact link          ✅ Goes to /contact
-  Step 3: Click "Talk to us"          ✅ Goes to /contact
-  Result: ✅ WORKS
-
-User Journey 6: Footer Links
-  Step 1: Click logo                  ✅ Goes to home
-  Step 2: Click legal                 ✅ Goes to /legal
-  Result: ✅ WORKS
-
-Total User Journeys Tested: 6 ✅
-Success Rate: 100% ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✅ ERROR CHECKING
-────────────────────────────────────────────────────────────────────────────
-
-Module Resolution:
-  ✅ All component imports resolve
-  ✅ All utility imports resolve
-  ✅ All page routes exist
-  ✅ No "Module not found" errors
-
-Link Validation:
-  ✅ All internal links point to existing pages
-  ✅ No broken links
-  ✅ No 404 errors expected
-
-Type Safety:
-  ✅ TypeScript configuration correct
-  ✅ Props properly typed
-  ✅ No type errors
-
-Build Configuration:
-  ✅ next.config.ts properly set
-  ✅ allowedDevOrigins configured
-  ✅ Build will succeed
-
-Issues Found: 0 ✅
-Errors Fixed: 7 total
-Remaining Issues: NONE ✅
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📊 FINAL STATISTICS
-────────────────────────────────────────────────────────────────────────────
-
-Components:           13 ✅ (All working)
-Pages:                6 ✅ (All functional)
-Links Tested:         9 ✅ (All working)
-User Journeys:        6 ✅ (100% success)
-Configuration Files:  7 ✅ (All valid)
-Issues Fixed:         7 ✅ (Resolved)
-Remaining Issues:     0 ✅ (None!)
-
-Code Quality:         ✅ EXCELLENT
-Functionality:        ✅ PERFECT
-Responsiveness:       ✅ COMPLETE
-Documentation:        ✅ COMPREHENSIVE
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🎯 TESTING CONCLUSION
-────────────────────────────────────────────────────────────────────────────
-
-OVERALL STATUS: ✅✅✅ PRODUCTION READY ✅✅✅
-
-All checks passed:
-  ✅ Component integrity verified
-  ✅ Page routes validated
-  ✅ All CTA buttons tested
-  ✅ User workflows tested
-  ✅ Links verified
-  ✅ Configuration validated
-  ✅ Styling complete
-  ✅ Responsive design confirmed
-  ✅ No errors found
-  ✅ All imports resolve
-
-The website is 100% functional and ready for:
-  ✅ Local development
-  ✅ Production deployment
-  ✅ User testing
-  ✅ Public launch
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-✨ READY FOR INSTALLATION ✨
-
-You can now:
-  1. Download the zip file
-  2. Extract it
-  3. Run: npm install
-  4. Run: npm run dev
-  5. Open: http://localhost:3000
-  6. Everything will work perfectly ✅
-
-═══════════════════════════════════════════════════════════════════════════════
+# Testing Report — AntGRP Website (v3)
+
+Date: 2026-07-18
+Scope: light-theme redesign, copy rewrite, About page, LinkedIn
+integration, and the contact-form backend (email + HR webhook).
+
+## 1. Build & static analysis
+
+| Check | Command | Result |
+|---|---|---|
+| Install | `npm install` | Passes |
+| Production build | `npm run build` | **Passes.** 17 static routes + 1 dynamic API route (`/api/contact`), Next.js 16.2.6 / Turbopack. No network access needed (self-hosted Manrope). |
+| TypeScript | part of `next build` | Passes |
+| Lint | `npm run lint` | **0 errors** (one pre-existing style warning on `postcss.config.mjs`) |
+
+## 2. Functional tests (production server)
+
+All routes requested against `npm run start`; every page returned HTTP
+200: `/`, `/about`, `/leadership`, `/industries`, `/careers`, `/contact`,
+`/legal`, `/services`, and all 8 service detail pages.
+
+Navigation: About and Leadership are now direct top-level links; Services
+and Industries retain mega-menus; mobile drawer mirrors the same items.
+Footer sitemap verified against the actual route list.
+
+## 3. Contact form backend — end-to-end tests
+
+Environment: production build, `MAIL_TO` set (mock email transport — no
+SMTP credentials available in the test environment), `HR_WEBHOOK_URL`
+pointed at a local listener that recomputes and checks the HMAC signature.
+
+| # | Scenario | Expected | Result |
+|---|---|---|---|
+| T1 | GET all routes | 200 | ✅ |
+| T2 | Valid submission | 200 `{ok:true}`; email rendered; webhook delivered with **valid HMAC** | ✅ (listener logged payload, `valid: true`) |
+| T3 | Invalid email format | 422 + `errors.email` | ✅ |
+| T4 | Message under 10 chars | 422 + `errors.message` | ✅ |
+| T5 | Honeypot field filled | Fake 200, **no** email/webhook delivery | ✅ (listener received nothing) |
+| T6 | Malformed JSON body | 400 | ✅ |
+| T7 | XSS payload in name/message | Accepted but HTML-escaped in email (`&lt;script&gt;…`) | ✅ (verified in rendered email HTML) |
+| T8 | 6th submission inside 10-min window | 429 with retry message | ✅ (three consecutive 429s) |
+| T9 | All delivery channels failing (webhook down, no email) | 502 with user-facing fallback message | ✅ |
+
+**Email behavior**: with no `SMTP_HOST`, nodemailer's `jsonTransport`
+renders the complete message (from/to/reply-to/subject/text/HTML) to the
+server log — the full pipeline up to the SMTP handshake is exercised.
+Real SMTP delivery could not be tested because no credentials exist in
+this environment; the transport switch is a single config branch and the
+message construction is identical in both modes.
+
+**HR webhook**: tested against a real local HTTP listener. Verified the
+documented payload shape, the 5-second timeout path (T9), and that the
+`X-Antgrp-Signature` HMAC-SHA256 digest validates against the shared
+secret. The production HR endpoint URL/spec was not available; the
+integration layer and its activation requirements are documented in the
+README ("HR integration").
+
+## 4. UI states (contact form)
+
+Implemented and code-reviewed: inline field errors with `aria-invalid` +
+`aria-describedby`, disabled submitting state, success confirmation
+(`role="status"`), and a server-error banner (`role="alert"`) shown on
+429/5xx with a fallback email address. Client-side validation mirrors the
+server rules via the shared `lib/contact.ts`, and the server re-validates
+authoritatively (verified by T3/T4 issued directly against the API,
+bypassing the client).
+
+## 5. Accessibility checks
+
+- `<html lang="en">` present; one `<h1>` per page; heading levels nest
+  h1 → h2 → h3 without skips (grep-verified across pages).
+- Color contrast (computed): body text `#1f2b3a` on white 14.5:1;
+  secondary `#545b66` 6.8:1; accent `#0f766e` on white 5.4:1; white on
+  accent buttons 5.4:1; footer `slate-300`/`slate-400` on `#1f2b3a` ≥
+  5.5:1 — all meet WCAG AA for their text sizes.
+- Every form input has a programmatically associated `<label>`; required
+  fields marked; honeypot hidden from assistive tech (`aria-hidden`,
+  `tabIndex={-1}`, off-screen).
+- External LinkedIn links: `rel="noopener noreferrer"`, visible text
+  labels, and screen-reader-only "(opens in a new tab)" notes; the
+  icon-only footer link has an `aria-label`.
+- Decorative SVGs marked `aria-hidden`; mobile menu button exposes
+  `aria-expanded`.
+- Note: automated tooling (axe, Lighthouse) could not run — no browser is
+  available in this environment. Checks above were performed against the
+  rendered HTML and computed contrast ratios.
+
+## 6. Responsive testing
+
+No headless browser is available in this sandbox (system dependencies for
+Playwright's Chromium cannot be installed without root — attempted and
+blocked), so responsive behavior was verified at the rendered-HTML/CSS
+level:
+
+- Mobile nav toggle/drawer (`md:hidden`/`md:flex`) present and mirrors
+  desktop items.
+- 30+ responsive grid declarations across pages (`sm:`/`md:`/`lg:`
+  breakpoints) for card grids, the form layout (2-column collapsing to
+  1), footer columns, and the process strip.
+- Type scales down at each breakpoint (`text-4xl md:text-5xl lg:text-6xl`
+  hero, etc.).
+- Recommended before launch: a manual pass at 375 / 768 / 1024 / 1440 px
+  or a preview deploy (Vercel/Netlify render in real browsers).
+
+## 7. Known limitations
+
+1. **SMTP not live-tested** — no credentials in the build environment;
+   mock transport verified the full message pipeline instead (§3).
+2. **HR endpoint is a documented placeholder** — the integration layer is
+   complete and tested against a local listener; activation needs the
+   four items listed in the README.
+3. **Rate limiter is in-memory** — correct on a single instance; use a
+   shared store on serverless/multi-instance hosting (documented, and the
+   code is isolated for the swap).
+4. **No pixel-level browser testing** in this environment (§5, §6).
+5. **Company LinkedIn URL** — the brief supplied the admin dashboard URL,
+   which only admins can open; the site links the public company page
+   form of the same URL (`linkedin.com/company/124884115/`).
+6. **No persistent storage of submissions** — by design (privacy);
+   delivery is email + webhook. If an audit trail is required, add a
+   database write in the API route.
+
+## 8. Summary
+
+Production build succeeds; all 18 routes serve correctly; the form
+workflow — validation, sanitization, honeypot, rate limiting, email
+notification, and signed HR webhook forwarding — was tested end to end as
+far as available credentials allow (mock SMTP transport, local webhook
+listener with real HMAC verification). Remaining activation steps are
+credential/endpoint provisioning only, documented in the README.

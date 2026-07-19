@@ -1,23 +1,44 @@
 import Container from "@/components/Container";
 
-export default function Stats() {
-  const stats = [
-    { label: "Years of Experience", value: "11+" },
-    { label: "Industries Served", value: "4+" },
-    { label: "Successful Projects", value: "100+" },
-    { label: "Team Members", value: "50+" },
+/**
+ * Optional qualitative highlights strip. Not currently used on any page —
+ * kept available for pages that want a lightweight differentiators band
+ * without resorting to unverifiable numeric claims (years in business,
+ * headcount, engagement counts, etc.), which this site intentionally
+ * does not publish.
+ */
+export default function Highlights() {
+  const highlights = [
+    {
+      label: "Consulting-led delivery",
+      description: "Every placement and build starts with a scoped technical understanding of the problem.",
+    },
+    {
+      label: "Enterprise governance",
+      description: "Documented process, clear ownership, and predictable communication on every engagement.",
+    },
+    {
+      label: "Cross-industry fluency",
+      description: "Consultants who already understand the regulatory and technical realities of your sector.",
+    },
+    {
+      label: "Long-term partnership",
+      description: "We measure success by whether clients return for the next initiative.",
+    },
   ];
 
   return (
-    <section className="py-16 bg-slate-50">
-      <Container>
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-4xl font-bold text-brand mb-2">
-                {stat.value}
+    <section className="border-b border-line bg-cream py-16">
+      <Container size="wide">
+        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4">
+          {highlights.map((h) => (
+            <div key={h.label}>
+              <div className="mb-2 text-sm font-bold uppercase tracking-[0.08em] text-brand">
+                {h.label}
               </div>
-              <p className="text-sm text-slate-600">{stat.label}</p>
+              <p className="max-w-[220px] text-sm leading-snug text-mute">
+                {h.description}
+              </p>
             </div>
           ))}
         </div>

@@ -2,42 +2,54 @@ import Container from "@/components/Container";
 import PageHeader from "@/components/PageHeader";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Industries — AntGRP",
+  description:
+    "IT consulting and technology staffing with deep domain knowledge across healthcare, finance, telecom, retail, insurance, and technology.",
+};
+
 const industries = [
   {
+    id: "healthcare",
+    number: "01",
     name: "Healthcare",
     description:
-      "Compliance-driven QA for healthcare systems. HIPAA-compliant testing, patient data security, and regulatory requirements.",
-    experience: "8+ years",
+      "HIPAA-aware engineers, architects, and analysts for health systems, payers, and health-tech companies. From EHR integrations and interoperability (HL7/FHIR) to patient-facing platforms, we deliver talent and solutions that respect both compliance and care.",
   },
   {
+    id: "finance",
+    number: "02",
     name: "Finance & Banking",
     description:
-      "Mission-critical testing for financial systems. Payment processing, trading platforms, and banking infrastructure.",
-    experience: "10+ years",
+      "Technology partners for mission-critical financial platforms — payments, trading, core banking, and risk systems. Our consultants combine engineering depth with an understanding of uptime, auditability, and regulatory expectations.",
   },
   {
+    id: "telecom",
+    number: "03",
     name: "Telecommunications",
     description:
-      "Large-scale system testing for telecom. Billing systems, network infrastructure, and customer platforms.",
-    experience: "9+ years",
+      "Large-scale systems expertise for carriers and network providers: billing and OSS/BSS platforms, network infrastructure automation, and customer experience systems built for high-volume subscriber bases.",
   },
   {
-    name: "E-Commerce",
+    id: "ecommerce",
+    number: "04",
+    name: "Retail & E-Commerce",
     description:
-      "High-volume transaction testing. Payment gateways, inventory systems, and customer experience optimization.",
-    experience: "7+ years",
+      "High-volume commerce engineering — payment gateways, inventory and order management, personalization, and peak-season scalability built to hold up under seasonal demand spikes.",
   },
   {
+    id: "insurance",
+    number: "05",
     name: "Insurance",
     description:
-      "Complex policy and claims testing. Regulatory compliance, data accuracy, and integration testing.",
-    experience: "8+ years",
+      "Modernization specialists for policy administration, claims processing, and underwriting platforms. We help insurers integrate legacy cores with modern digital experiences while keeping compliance front and center.",
   },
   {
+    id: "technology",
+    number: "06",
     name: "Technology & SaaS",
     description:
-      "Agile-driven QA for software companies. Continuous deployment, API testing, and cloud infrastructure.",
-    experience: "11+ years",
+      "Product engineering and on-demand specialists for software companies moving fast — platform scaling, cloud cost optimization, AI feature delivery, and senior engineers who integrate into agile teams from day one.",
   },
 ];
 
@@ -47,27 +59,28 @@ export default function IndustriesPage() {
       <PageHeader
         eyebrow="Industries"
         title="Expertise across"
-        accent="multiple sectors."
-        description="We have deep domain knowledge across diverse industries, bringing specialized testing expertise wherever you need it."
+        accent="the sectors that run on IT."
+        description="Technology challenges are shaped by the industries they live in. We bring consultants and place talent with real domain experience — so engagements start with context, not a learning curve."
       />
 
       <section className="py-20 md:py-28">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {industries.map((industry) => (
               <div
                 key={industry.name}
-                className="rounded-2xl border border-slate-200 p-8 hover:border-brand hover:shadow-lg transition duration-300 bg-white"
+                id={industry.id}
+                className="scroll-mt-24 rounded-2xl border border-line bg-white p-8 transition duration-300 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/5"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-bold text-slate-900">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <h3 className="font-display text-2xl text-ink">
                     {industry.name}
                   </h3>
-                  <span className="text-xs font-bold uppercase tracking-wider text-brand bg-brand/10 px-3 py-1 rounded-full">
-                    {industry.experience}
+                  <span className="shrink-0 text-sm font-bold tracking-wider text-brand">
+                    {industry.number}
                   </span>
                 </div>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="leading-relaxed text-mute">
                   {industry.description}
                 </p>
               </div>
@@ -76,21 +89,22 @@ export default function IndustriesPage() {
         </Container>
       </section>
 
-      <section className="bg-gradient-to-r from-brand to-brand-2 py-16 md:py-24">
+      <section className="bg-gradient-to-r from-brand-3 to-brand py-16 md:py-24">
         <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Does your industry need specialized QA?
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-6 text-3xl font-bold text-white md:text-4xl">
+              Operating in a different industry?
             </h2>
-            <p className="text-lg text-white/90 mb-8">
-              We have the expertise and experience to handle your domain's unique
-              testing challenges.
+            <p className="mb-8 text-lg text-white/90">
+              Domain fluency transfers. If your business runs on technology, we
+              can find the talent and shape the solution — tell us what
+              you&apos;re building.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-3 rounded-lg bg-white text-brand font-semibold hover:bg-slate-50 transition"
+              className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 font-semibold text-brand-3 transition hover:bg-cream"
             >
-              Let's discuss →
+              Let&apos;s discuss <span aria-hidden className="ml-2">→</span>
             </Link>
           </div>
         </Container>
