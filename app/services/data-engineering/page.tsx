@@ -20,10 +20,10 @@ export default function DataEngineeringPage() {
                 Enterprise Data Solutions
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We design and build data infrastructure that turns raw data into
-                reliable, decision-ready information — from ETL pipelines
-                to real-time analytics platforms built for accuracy and
-                scale.
+                A dashboard nobody trusts is worse than no dashboard. We build
+                pipelines and warehouses where the numbers reconcile,
+                the lineage is traceable, and finance stops keeping its own
+                spreadsheet on the side.
               </p>
             </div>
 

@@ -3,24 +3,24 @@ import Container from "@/components/Container";
 export default function Principles() {
   const principles = [
     {
-      title: "Fit over volume",
+      title: "One good answer beats ten options",
       description:
-        "We present one well-matched candidate or one workable architecture, not a long list of possibilities. Every recommendation is checked against your stack, your domain, and your team.",
+        "When you ask for a candidate or an architecture, you get our best recommendation and the reasoning behind it — not a stack of possibilities to sort through yourself.",
     },
     {
-      title: "Documented delivery",
+      title: "Everything in writing",
       description:
-        "Statements of work, written status updates, and recorded decisions on every engagement — so progress is visible and commitments are auditable.",
+        "Scopes, status updates, and decisions are documented as we go. Six months from now, you will be able to reconstruct exactly what was agreed and why.",
     },
     {
-      title: "Domain experience",
+      title: "Industry context comes standard",
       description:
-        "Healthcare, finance, telecom, retail, insurance, and SaaS. The people we place and the consultants we field have worked inside the regulatory and technical constraints of these markets.",
+        "Healthcare, finance, telecom, retail, insurance, software. The people we send have worked under the regulations and legacy constraints your team lives with.",
     },
     {
-      title: "Repeat relationships",
+      title: "Judged by the second project",
       description:
-        "We measure success by whether clients return for the next hire or the next project, and we structure engagements accordingly.",
+        "The real test of a staffing partner is whether you call again. We structure pricing, placements, and communication so that you do.",
     },
   ];
 
@@ -32,7 +32,7 @@ export default function Principles() {
             How we work
           </div>
           <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            Four working principles.
+            Four commitments we can be held to.
           </h2>
         </div>
 

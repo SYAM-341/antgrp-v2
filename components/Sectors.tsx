@@ -84,13 +84,14 @@ export default function Sectors() {
               Industries we serve
             </div>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-              Six sectors we{" "}
+              Six industries we{" "}
               <span className="text-brand">know from the inside.</span>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-mute">
-              Regulation, legacy systems, and market pace differ by industry.
-              We staff and consult with people who have already worked within
-              your sector&apos;s constraints.
+              A payments platform and a hospital records system fail in
+              different ways. The consultants we field have worked inside
+              these industries, so the first week is spent solving your
+              problem — not learning your acronyms.
             </p>
           </div>
           <Link

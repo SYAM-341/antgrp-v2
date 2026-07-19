@@ -1,46 +1,69 @@
 import Container from "@/components/Container";
 
+/** Capability grid — icon, title, one concrete sentence each. */
+const capabilities = [
+  {
+    title: "Cloud & Infrastructure",
+    desc: "Migrations, landing zones, and the day-two operations that keep them stable.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6">
+        <path d="M17.5 19a4.5 4.5 0 0 0 .42-8.98 6 6 0 0 0-11.7 1.42A3.5 3.5 0 0 0 6.5 19h11z" />
+      </svg>
+    ),
+  },
+  {
+    title: "Data & Analytics",
+    desc: "Pipelines and warehouses that finance and operations both agree to trust.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6">
+        <ellipse cx="12" cy="5.5" rx="7" ry="2.8" />
+        <path d="M5 5.5v6c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8v-6" />
+        <path d="M5 11.5v6c0 1.55 3.13 2.8 7 2.8s7-1.25 7-2.8v-6" />
+      </svg>
+    ),
+  },
+  {
+    title: "AI & Machine Learning",
+    desc: "Models that make it past the demo — deployed, monitored, and retrained.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6">
+        <rect x="7" y="7" width="10" height="10" rx="2" />
+        <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.5 5.5 8 8M18.5 5.5 16 8M5.5 18.5 8 16M18.5 18.5 16 16" />
+      </svg>
+    ),
+  },
+  {
+    title: "Enterprise Software",
+    desc: "Applications and integrations built to outlast the team that shipped them.",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-6 w-6">
+        <rect x="3" y="4" width="18" height="14" rx="2" />
+        <path d="M3 9h18M8 21h8M12 18v3" />
+      </svg>
+    ),
+  },
+];
+
 export default function Partners() {
-  const partners = [
-    { name: "AWS", category: "Cloud Platform" },
-    { name: "Microsoft Azure", category: "Cloud Platform" },
-    { name: "Google Cloud", category: "Cloud Platform" },
-    { name: "Kubernetes", category: "Container Orchestration" },
-    { name: "Databricks", category: "Data & AI Platform" },
-    { name: "Snowflake", category: "Data Warehouse" },
-    { name: "React & Next.js", category: "Web Engineering" },
-    { name: "Salesforce", category: "Enterprise CRM" },
-    { name: "ServiceNow", category: "Enterprise Workflow" },
-    { name: "Terraform", category: "Infrastructure as Code" },
-    { name: "OpenAI & Claude", category: "AI / LLM" },
-    { name: "Jenkins & GitHub", category: "CI/CD" },
-  ];
-
   return (
-    <section className="bg-white py-20 md:py-24">
+    <section className="border-y border-line bg-white py-16 md:py-20">
       <Container size="wide">
-        <div className="max-w-2xl">
-          <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-brand">
-            Technology ecosystem
-          </div>
-          <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-            The platforms we work with.
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="font-display text-2xl text-ink md:text-3xl">
+            Four practices. One standard of work.
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-mute">
-            Our consultants and placed specialists work with these platforms
-            daily. Engagements start with working knowledge of your stack,
-            not a ramp-up period.
-          </p>
         </div>
-
-        <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-          {partners.map((partner) => (
+        <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {capabilities.map((c) => (
             <div
-              key={partner.name}
-              className="flex flex-col items-center justify-center rounded-xl border border-line bg-cream p-5 text-center transition hover:border-brand/40 hover:bg-soft"
+              key={c.title}
+              className="rounded-2xl border border-line bg-cream p-6 transition hover:border-brand/40"
             >
-              <p className="font-semibold text-ink">{partner.name}</p>
-              <p className="mt-1 text-xs text-mute">{partner.category}</p>
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand/10 text-brand">
+                {c.icon}
+              </div>
+              <h3 className="mt-4 text-base font-semibold text-ink">{c.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-mute">{c.desc}</p>
             </div>
           ))}
         </div>

@@ -6,7 +6,7 @@ import AxeBuilder from "@axe-core/playwright";
  * critical violation. Moderate/minor findings are reported in the HTML
  * report attachment without failing the build.
  */
-const pagesToScan = ["/", "/about", "/leadership", "/contact", "/services", "/careers"];
+const pagesToScan = ["/", "/about", "/contact", "/services", "/careers"];
 
 for (const path of pagesToScan) {
   test(`axe scan: ${path}`, async ({ page }, testInfo) => {

@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Corporate light palette — warm off-white foundation, deep slate text,
-     restrained teal accent. All pairings meet WCAG AA contrast. */
-  --color-ink: #1f2b3a;      /* deep slate — headings, footer background */
-  --color-ink-2: #2a3849;
-  --color-ink-3: #35455a;
-  --color-navy: #22303f;
-  --color-navy-2: #2c3b4d;
-  --color-line: #e6e4df;     /* soft warm hairline */
+  /* Corporate palette v5 — warm off-white foundation, deep ink text,
+     restrained teal accent. All pairings meet WCAG AA; body text runs
+     darker than AA requires by design. */
+  --color-ink: #1a2430;      /* headings, footer background */
+  --color-ink-2: #243040;
+  --color-ink-3: #2f3d4f;
+  --color-navy: #1f2b3a;
+  --color-navy-2: #2a3849;
+  --color-line: #e6e4df;
   --color-line-dark: #d6d3cc;
-  --color-mute: #545b66;     /* secondary text — 6.8:1 on white */
-  --color-cream: #faf9f6;    /* warm off-white section background */
-  --color-soft: #f3f2ee;     /* soft gray fill */
-  --color-brand: #0f766e;    /* muted teal accent — 5.4:1 on white */
-  --color-brand-2: #0d9488;  /* lighter teal for hover/decorative */
-  --color-brand-3: #115e59;  /* dark teal for hover states */
+  --color-mute: #2b3440;     /* body paragraphs — 11.9:1 on white */
+  --color-caption: #3f4650;  /* captions & metadata only — 9:1 on white */
+  --color-cream: #faf9f6;
+  --color-soft: #f3f2ee;
+  --color-brand: #0f766e;
+  --color-brand-2: #0d9488;
+  --color-brand-3: #115e59;
 
-  --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Source Sans 3 Variable", "Source Sans 3", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Source Serif 4 Variable", "Source Serif 4", ui-serif, Georgia, serif;
 }
 
 :root {
@@ -35,21 +38,21 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 17px;
+  font-weight: 430;
+  line-height: 1.7;
   text-rendering: optimizeLegibility;
 }
 
+/* Display headings — serif, used for page and section headings only.
+   UI chrome (nav, buttons, forms, cards) stays in the sans. */
 .font-display {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--font-serif);
+  font-weight: 640;
+  letter-spacing: -0.015em;
 }
 
-/* Bright section backdrop — warm off-white with a faint teal wash in the
-   upper corner. Replaces the former dark hero/header treatment. */
+/* Bright section backdrop for page headers. */
 .bg-header-light {
   background-color: var(--color-cream);
   background-image: radial-gradient(110% 90% at 88% 0%, rgba(15, 118, 110, 0.07) 0%, rgba(250, 249, 246, 0) 55%);

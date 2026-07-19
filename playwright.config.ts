@@ -37,6 +37,13 @@ export default defineConfig({
       // Mobile project runs the specs tagged @mobile plus nav/smoke coverage.
       grep: /@mobile|@smoke/,
     },
+    {
+      // Narrow desktop (split-screen laptop widths) — regression coverage
+      // for layout defects that only appear between mobile and full width.
+      name: "narrow-desktop",
+      use: { ...devices["Desktop Chrome"], viewport: { width: 1024, height: 768 } },
+      testMatch: ["**/navigation.spec.ts", "**/smoke.spec.ts"],
+    },
     // Enable for cross-browser runs on a machine with the browsers installed:
     // { name: "firefox", use: { ...devices["Desktop Firefox"] } },
     // { name: "webkit", use: { ...devices["Desktop Safari"] } },
@@ -45,7 +52,9 @@ export default defineConfig({
     ? {}
     : {
         webServer: {
-          command: "npm run start",
+          // Test-only credentials; must match e2e/helpers.ts.
+          command:
+            "ADMIN_PASSWORD=test-admin-123 MAIL_TO=hradmin@antgrp.com npm run start",
           url: baseURL,
           reuseExistingServer: !process.env.CI,
           timeout: 60_000,

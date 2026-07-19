@@ -9,23 +9,17 @@ export const metadata = {
 };
 
 const LINKEDIN_COMPANY = "https://www.linkedin.com/company/124884115/";
-const LINKEDIN_FOUNDER = "https://www.linkedin.com/in/antgrpmary/";
 
 const channels = [
   {
-    label: "HR & Administration",
-    value: "hradmin@antgrp.com",
-    href: "mailto:hradmin@antgrp.com",
+    label: "Careers & Applications",
+    value: "careers@antgrp.com",
+    href: "mailto:careers@antgrp.com",
   },
   {
-    label: "Finance",
-    value: "finance@antgrp.com",
-    href: "mailto:finance@antgrp.com",
-  },
-  {
-    label: "Timesheets",
-    value: "timesheets@antgrp.com",
-    href: "mailto:timesheets@antgrp.com",
+    label: "Business Inquiries",
+    value: "inquiry@antgrp.com",
+    href: "mailto:inquiry@antgrp.com",
   },
 ];
 
@@ -47,9 +41,9 @@ export default function ContactPage() {
     <>
       <PageHeader
         eyebrow="Contact"
-        title="Tell us what"
-        accent="you need."
-        description="Describe the project, the team, or the role. We respond to every inquiry within two business days."
+        title="Start the"
+        accent="conversation."
+        description="A few sentences about the project or the role is enough. Every message is read by a person and answered within two business days."
       />
 
       <section className="bg-white py-20 md:py-24">
@@ -63,8 +57,8 @@ export default function ContactPage() {
                 Direct channels.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-mute">
-                Prefer email? Pick the inbox closest to your inquiry — anything
-                else is routed through HR.
+                Prefer email? Two inboxes cover everything: careers for
+                candidates and resumes, inquiries for everything else.
               </p>
 
               <div className="mt-8 space-y-4">
@@ -86,49 +80,22 @@ export default function ContactPage() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-2xl border border-line bg-cream p-5">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand">
-                  LinkedIn
-                </div>
-                <div className="mt-3 space-y-2.5">
-                  <a
-                    href={LINKEDIN_COMPANY}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 text-sm font-semibold text-ink transition hover:text-brand"
-                  >
-                    <LinkedInIcon className="h-4 w-4 text-brand" />
-                    AntGRP company page
-                    <span className="sr-only">(opens in a new tab)</span>
-                  </a>
-                  <a
-                    href={LINKEDIN_FOUNDER}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2.5 text-sm font-semibold text-ink transition hover:text-brand"
-                  >
-                    <LinkedInIcon className="h-4 w-4 text-brand" />
-                    Founder &amp; President
-                    <span className="sr-only">(opens in a new tab)</span>
-                  </a>
-                </div>
-              </div>
-
-              <div className="mt-4 rounded-2xl border border-line bg-cream p-5">
-                <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand">
-                  Mailing address
-                </div>
-                <div className="mt-2 text-sm text-mute">
-                  Available on request.
-                </div>
-              </div>
+              <a
+                href={LINKEDIN_COMPANY}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="AntGRP on LinkedIn (opens in a new tab)"
+                className="mt-8 inline-flex h-11 w-11 items-center justify-center rounded-full border border-line text-brand transition hover:border-brand hover:bg-brand hover:text-white"
+              >
+                <LinkedInIcon className="h-5 w-5" />
+              </a>
             </div>
 
             <div className="md:col-span-7">
               <ContactForm />
               <div className="mt-6 text-xs text-mute">
                 Submissions are validated, rate-limited, and delivered to our
-                HR team. We keep your details only as long as needed to handle
+                team. We keep your details only as long as needed to handle
                 your inquiry.
               </div>
             </div>

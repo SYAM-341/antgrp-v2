@@ -20,9 +20,9 @@ export default function DevOpsInfrastructurePage() {
                 Enterprise DevOps Solutions
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We build robust DevOps practices, automation pipelines, and
-                infrastructure systems that enable faster, safer deployments at
-                scale.
+                Deployment should be the most boring part of your week. We build
+                the pipelines, infrastructure-as-code, and monitoring that
+                make releases routine — and rollbacks a non-event.
               </p>
             </div>
 

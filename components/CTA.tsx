@@ -12,12 +12,13 @@ export default function CTA() {
       <Container>
         <div className="relative z-10 text-center">
           <h2 className="mb-4 font-display text-3xl text-white md:text-4xl">
-            Tell us what you need.
+            Tell us what you&apos;re trying to build.
           </h2>
           <p className="mx-auto mb-8 max-w-2xl text-lg text-white/90">
-            One specialist, a delivery team, or a scoped project — describe the
-            work and we&apos;ll respond within two business days with a
-            concrete next step.
+            Describe the project or the role in a few sentences. Within two
+            business days you&apos;ll have a reply from someone who read it —
+            with a concrete next step, or an honest &quot;we&apos;re not the
+            fit.&quot;
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link

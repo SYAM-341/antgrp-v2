@@ -20,9 +20,10 @@ export default function SolutionsArchitecturePage() {
                 Enterprise Solutions Design
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We design comprehensive solutions that align technology with
-                business objectives. Our architects bring deep expertise across
-                industries and domains.
+                Architecture is a set of decisions you&apos;ll live with for
+                years. We help you make them deliberately — mapping the
+                systems you have, the constraints you can&apos;t move, and
+                the shortest defensible path to what you need.
               </p>
             </div>
 

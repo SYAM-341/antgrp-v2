@@ -7,14 +7,14 @@ test.describe("Homepage content", () => {
 
   test("hero renders headline, copy, and CTAs", async ({ page }) => {
     await expect(
-      page.getByRole("heading", { level: 1, name: /right people/i }),
+      page.getByRole("heading", { level: 1, name: /expertise/i }),
     ).toBeVisible();
     const hero = page.locator("section").first();
-    await expect(hero.getByRole("link", { name: /get in touch/i })).toHaveAttribute(
+    await expect(hero.getByRole("link", { name: /start a conversation/i })).toHaveAttribute(
       "href",
       "/contact",
     );
-    await expect(hero.getByRole("link", { name: /explore services/i })).toHaveAttribute(
+    await expect(hero.getByRole("link", { name: /see what we do/i })).toHaveAttribute(
       "href",
       "/services",
     );
@@ -47,7 +47,7 @@ test.describe("Homepage content", () => {
   });
 
   test("closing CTA links to contact and about", async ({ page }) => {
-    const cta = page.locator("section", { hasText: "Tell us what you need" }).last();
+    const cta = page.locator("section", { hasText: "trying to build" }).last();
     await expect(cta.getByRole("link", { name: /get in touch/i })).toHaveAttribute(
       "href",
       "/contact",

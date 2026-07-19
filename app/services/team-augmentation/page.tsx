@@ -20,12 +20,12 @@ export default function TeamAugmentationPage() {
                 Find the Right Talent, Fast
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                Great teams are built on fit, not just résumés. We vet every
-                consultant for technical depth, domain experience, and how they
-                work with a team — then match them to your technology stack and
-                business context. Whether you need one senior architect, a
-                platform squad, or leadership for a critical initiative, we
-                deliver people who contribute from week one.
+                A résumé tells you what someone has touched; it doesn&apos;t tell
+                you what they can carry. Our screening is run by engineers,
+                covers real scenarios from your stack, and ends with a
+                recommendation we&apos;re willing to defend. One architect or
+                a full squad — the people we send are contributing in week
+                one, not week six.
               </p>
             </div>
 

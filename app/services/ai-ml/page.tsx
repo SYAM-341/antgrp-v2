@@ -20,10 +20,10 @@ export default function AiMlEngineeringPage() {
                 AI/ML Engineering Solutions
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We build machine learning systems that run in production — LLM
-                applications, computer vision, and predictive models — with
-                the monitoring and retraining infrastructure they need to
-                stay reliable.
+                Most machine learning projects die between the demo and
+                production. Ours are built for the second part: models with
+                monitoring, retraining schedules, and a clear answer to
+                &quot;what happens when it&apos;s wrong?&quot;
               </p>
             </div>
 

@@ -20,10 +20,10 @@ export default function CloudArchitecturePage() {
                 Enterprise Cloud Solutions
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We design and implement cloud architectures that are scalable,
-                secure, and cost-effective — from migrations off legacy
-                infrastructure to greenfield builds designed for long-term
-                maintainability.
+                Cloud bills grow quietly and outages arrive loudly. We design
+                and run migrations with both in mind — landing zones with
+                guardrails, workloads sized to what they actually use, and
+                documentation the next engineer can follow.
               </p>
             </div>
 

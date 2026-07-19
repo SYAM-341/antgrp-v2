@@ -58,9 +58,9 @@ export default function IndustriesPage() {
     <>
       <PageHeader
         eyebrow="Industries"
-        title="Expertise across"
-        accent="the sectors that run on IT."
-        description="Technology challenges are shaped by the industries they live in. We bring consultants and place talent with real domain experience — so engagements start with context, not a learning curve."
+        title="Industry context,"
+        accent="built in."
+        description="A billing migration at a carrier is nothing like one at a bank. The people we field have lived those differences, so projects start with context instead of a ramp-up."
       />
 
       <section className="py-20 md:py-28">

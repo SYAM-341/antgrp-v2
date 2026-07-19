@@ -59,9 +59,9 @@ export default function LegalPage() {
               For questions about this notice, email{" "}
               <a
                 className="font-semibold text-ink underline"
-                href="mailto:hradmin@antgrp.com"
+                href="mailto:inquiry@antgrp.com"
               >
-                hradmin@antgrp.com
+                inquiry@antgrp.com
               </a>
               .
             </div>

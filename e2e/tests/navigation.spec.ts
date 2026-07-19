@@ -11,11 +11,10 @@ test.describe("Header navigation (desktop)", () => {
     await expect(page).toHaveURL(/\/$/);
   });
 
-  test("direct links navigate to About, Leadership, Careers, Contact", async ({ page }) => {
+  test("direct links navigate to About, Careers, Contact", async ({ page }) => {
     const nav = new NavComponent(page);
     for (const [label, path] of [
       ["About", "/about"],
-      ["Leadership", "/leadership"],
       ["Careers", "/careers"],
       ["Contact", "/contact"],
     ] as const) {
@@ -73,7 +72,6 @@ test.describe("Footer", () => {
     await page.goto("/");
     const footer = page.locator("footer");
     for (const [name, path] of [
-      ["Leadership", "/leadership"],
       ["Technology Staffing", "/services/team-augmentation"],
       ["Legal", "/legal"],
     ] as const) {
@@ -81,5 +79,22 @@ test.describe("Footer", () => {
       await footer.getByRole("link", { name, exact: true }).click();
       await expect(page).toHaveURL(new RegExp(`${path}$`));
     }
+  });
+});
+
+test.describe("Mega-menu viewport containment", () => {
+  test.skip(({ isMobile }) => isMobile, "Desktop-only");
+
+  test("Services panel stays fully inside the viewport", async ({ page }) => {
+    const nav = new NavComponent(page);
+    await page.goto("/");
+    await nav.openMegaMenu("Services");
+    const link = nav.megaMenuLink("Cloud Architecture & Migration");
+    await expect(link).toBeVisible();
+    const box = await link.locator("xpath=ancestor::div[contains(@class,'rounded-2xl')]").first().boundingBox();
+    const viewport = page.viewportSize()!;
+    expect(box, "panel should render").toBeTruthy();
+    expect(box!.x, "panel clipped off the left edge").toBeGreaterThanOrEqual(0);
+    expect(box!.x + box!.width, "panel clipped off the right edge").toBeLessThanOrEqual(viewport.width + 1);
   });
 });

@@ -5,7 +5,6 @@ import Logo from "./Logo";
 // Public company page derived from the provided LinkedIn admin URL
 // (admin dashboard URLs are only visible to page admins).
 const LINKEDIN_COMPANY = "https://www.linkedin.com/company/124884115/";
-const LINKEDIN_FOUNDER = "https://www.linkedin.com/in/antgrpmary/";
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -52,7 +51,6 @@ const cols: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Leadership", href: "/leadership" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
       { label: "Legal", href: "/legal" },
@@ -65,15 +63,15 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-ink text-slate-300">
       <Container size="wide">
-        <div className="grid gap-12 py-16 md:grid-cols-12">
+        <div className="grid gap-10 py-12 md:grid-cols-12">
           {/* Brand block */}
           <div className="md:col-span-4">
             <Link href="/" aria-label="AntGRP home">
               <Logo dark />
             </Link>
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-slate-400">
-              IT consulting and technology staffing across cloud, data, AI,
-              and enterprise software.
+              Expertise, delivered. IT consulting and technology staffing
+              for companies that measure partners by results.
             </p>
             <div className="mt-6 inline-flex items-center gap-2 text-sm text-slate-400">
               <span className="relative flex h-2 w-2">
@@ -104,7 +102,7 @@ export default function Footer() {
           </div>
 
           {/* Sitemap */}
-          <div className="grid grid-cols-2 gap-8 md:col-span-8 md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-8 md:col-span-8 lg:grid-cols-4">
             {cols.map((col) => (
               <div key={col.title}>
                 <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-teal-400">
@@ -114,7 +112,7 @@ export default function Footer() {
                   {col.links.map((l) => (
                     <li key={l.href + l.label}>
                       <Link
-                        className="text-sm text-slate-400 hover:text-white transition"
+                        className="whitespace-nowrap text-sm text-slate-400 hover:text-white transition"
                         href={l.href}
                       >
                         {l.label}
@@ -131,24 +129,13 @@ export default function Footer() {
           <div>© {year} AntGRP. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-4">
             <Link href="/legal" className="hover:text-white transition">
-              Privacy
-            </Link>
-            <Link href="/legal" className="hover:text-white transition">
-              Disclaimer
+              Privacy &amp; Disclaimer
             </Link>
             <a
-              href={LINKEDIN_FOUNDER}
-              target="_blank"
-              rel="noopener noreferrer"
               className="hover:text-white transition"
+              href="mailto:inquiry@antgrp.com"
             >
-              Founder on LinkedIn
-            </a>
-            <a
-              className="hover:text-white transition"
-              href="mailto:hradmin@antgrp.com"
-            >
-              hradmin@antgrp.com
+              inquiry@antgrp.com
             </a>
           </div>
         </div>

@@ -20,9 +20,10 @@ export default function FullStackDevelopmentPage() {
                 Modern Full-Stack Development
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We build robust, scalable web applications from frontend to
-                backend. Our full-stack expertise spans modern frameworks and
-                cloud-native architectures.
+                We build web applications end to end — the interface users see,
+                the APIs behind it, and the infrastructure underneath — with
+                the tests and documentation that let your own team take over
+                without a handover crisis.
               </p>
             </div>
 

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import Container from "./Container";
 import Logo from "./Logo";
 
@@ -44,7 +45,7 @@ const NAV: NavItem[] = [
           {
             href: "/services/team-augmentation",
             label: "Technology Staffing",
-            desc: "Vetted specialists, matched to your stack.",
+            desc: "Specialists, matched to your stack.",
           },
           {
             href: "/services/full-stack-development",
@@ -108,27 +109,19 @@ const NAV: NavItem[] = [
       },
     ],
   },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Leadership",
-    href: "/leadership",
-  },
-  {
-    label: "Careers",
-    href: "/careers",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  { label: "About", href: "/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Contact", href: "/contact" },
 ];
 
-function Caret() {
+function Caret({ open }: { open: boolean }) {
   return (
-    <svg className="ml-1.5 h-3 w-3 opacity-70" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+    <svg
+      className={`ml-1.5 h-3 w-3 opacity-70 transition-transform ${open ? "rotate-180" : ""}`}
+      viewBox="0 0 12 12"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M2 4l4 4 4-4"
         stroke="currentColor"
@@ -140,10 +133,16 @@ function Caret() {
   );
 }
 
-function MegaPanel({ columns }: { columns: NavGroup[] }) {
+function MegaPanel({
+  columns,
+  onNavigate,
+}: {
+  columns: NavGroup[];
+  onNavigate: () => void;
+}) {
   return (
-    <div className="absolute left-1/2 top-full z-50 hidden min-w-[640px] -translate-x-1/2 pt-3 group-hover:block">
-      <div className="rounded-2xl border border-line bg-white p-6 shadow-xl shadow-ink/5 ring-1 ring-ink/5">
+    <div className="fixed left-1/2 top-16 z-50 w-[640px] max-w-[calc(100vw-1rem)] -translate-x-1/2 pt-3">
+      <div className="max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl border border-line bg-white p-6 shadow-xl shadow-ink/5 ring-1 ring-ink/5">
         <div className="grid grid-cols-2 gap-x-10 gap-y-2">
           {columns.map((col, i) => (
             <div key={i}>
@@ -157,13 +156,14 @@ function MegaPanel({ columns }: { columns: NavGroup[] }) {
                   <li key={l.href + l.label}>
                     <Link
                       href={l.href}
+                      onClick={onNavigate}
                       className="group/item block rounded-md p-1 -m-1 hover:bg-soft"
                     >
                       <div className="text-sm font-semibold text-ink group-hover/item:text-brand transition">
                         {l.label}
                       </div>
                       {l.desc ? (
-                        <div className="mt-0.5 text-xs text-mute">{l.desc}</div>
+                        <div className="mt-0.5 text-xs text-caption">{l.desc}</div>
                       ) : null}
                     </Link>
                   </li>
@@ -178,7 +178,28 @@ function MegaPanel({ columns }: { columns: NavGroup[] }) {
 }
 
 export default function Nav() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // mobile drawer
+  const [openMenu, setOpenMenu] = useState<string | null>(null); // desktop flyout
+  const pathname = usePathname();
+
+  // Close everything on route change — the fix for flyouts surviving
+  // client-side navigation. Uses React's derived-state reset pattern
+  // (state adjusted during render) rather than an effect.
+  const [prevPath, setPrevPath] = useState(pathname);
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
+    setOpenMenu(null);
+    setOpen(false);
+  }
+
+  // Escape closes the flyout.
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpenMenu(null);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
@@ -188,9 +209,14 @@ export default function Nav() {
             <Logo />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1 text-[15px]" aria-label="Main">
+          <nav className="hidden lg:flex items-center gap-1 text-[15px]" aria-label="Main">
             {NAV.map((item) => (
-              <div key={item.label} className="group relative">
+              <div
+                key={item.label}
+                className="relative"
+                onMouseEnter={() => item.columns && setOpenMenu(item.label)}
+                onMouseLeave={() => item.columns && setOpenMenu(null)}
+              >
                 {item.href && !item.columns ? (
                   <Link
                     href={item.href}
@@ -203,18 +229,28 @@ export default function Nav() {
                     <button
                       className="inline-flex items-center rounded-md px-3 py-2 font-semibold text-ink/80 hover:text-ink transition"
                       type="button"
+                      aria-expanded={openMenu === item.label}
+                      aria-haspopup="true"
+                      onClick={() =>
+                        setOpenMenu(openMenu === item.label ? null : item.label)
+                      }
                     >
                       {item.label}
-                      {item.columns ? <Caret /> : null}
+                      {item.columns ? <Caret open={openMenu === item.label} /> : null}
                     </button>
-                    {item.columns ? <MegaPanel columns={item.columns} /> : null}
+                    {item.columns && openMenu === item.label ? (
+                      <MegaPanel
+                        columns={item.columns}
+                        onNavigate={() => setOpenMenu(null)}
+                      />
+                    ) : null}
                   </>
                 )}
               </div>
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/contact"
               className="inline-flex items-center justify-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-3 transition shadow-sm"
@@ -228,7 +264,7 @@ export default function Nav() {
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink"
+            className="lg:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink"
           >
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path
@@ -242,7 +278,7 @@ export default function Nav() {
         </div>
 
         {open ? (
-          <div className="md:hidden border-t border-line py-4">
+          <div className="lg:hidden border-t border-line py-4">
             <div className="grid gap-4">
               {NAV.map((item) => (
                 <div key={item.label}>

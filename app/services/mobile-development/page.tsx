@@ -20,9 +20,10 @@ export default function MobileDevelopmentPage() {
                 Enterprise Mobile Solutions
               </h2>
               <p className="text-lg text-mute mb-4 leading-relaxed">
-                We build high-performance mobile applications for iOS and
-                Android — native or cross-platform, with a consistent focus
-                on stability, speed, and a well-considered user experience.
+                A mobile app is judged in its first ten seconds and its next
+                ten thousand sessions. We build for both: iOS and Android
+                apps that launch fast, sync reliably, and survive the app
+                store review process without drama.
               </p>
             </div>
 

@@ -59,7 +59,7 @@ test.describe("Contact form", () => {
   test("server 502 shows error alert with fallback email", async () => {
     await contact.mockApi(502, {
       ok: false,
-      error: "We couldn't process your message right now. Please email hradmin@antgrp.com directly.",
+      error: "We couldn't process your message right now. Please email inquiry@antgrp.com directly.",
     });
     await contact.fill({
       name: "Test User",
@@ -68,7 +68,7 @@ test.describe("Contact form", () => {
     });
     await contact.submit();
     await expect(contact.serverErrorAlert).toBeVisible();
-    await expect(contact.serverErrorAlert).toContainText("hradmin@antgrp.com");
+    await expect(contact.serverErrorAlert).toContainText("inquiry@antgrp.com");
   });
 
   test("rate limit 429 surfaces retry message", async () => {

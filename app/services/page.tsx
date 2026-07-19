@@ -65,9 +65,9 @@ export default function ServicesPage() {
     <>
       <PageHeader
         eyebrow="Services"
-        title="Consulting, staffing,"
-        accent="and delivery."
-        description="Eight services covering cloud, data, AI, and enterprise software. Each one runs on the same engagement model: a written scope, vetted people, and a named owner."
+        title="What we"
+        accent="actually do."
+        description="Eight services across cloud, data, AI, and software delivery. Different work, same discipline: a written scope, people who have done it before, and one name on the outcome."
       />
 
       <section className="py-20 md:py-28">

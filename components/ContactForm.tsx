@@ -62,12 +62,12 @@ export default function ContactForm() {
       }
       setServerError(
         body?.error ??
-          "Something went wrong on our side. Please try again, or email hradmin@antgrp.com.",
+          "Something went wrong on our side. Please try again, or email inquiry@antgrp.com.",
       );
       setStatus("error");
     } catch {
       setServerError(
-        "We couldn't reach the server. Check your connection and try again, or email hradmin@antgrp.com.",
+        "We couldn't reach the server. Check your connection and try again, or email inquiry@antgrp.com.",
       );
       setStatus("error");
     }

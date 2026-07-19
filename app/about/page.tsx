@@ -19,19 +19,19 @@ const capabilities = [
 const values = [
   {
     title: "Fit over volume",
-    desc: "One well-matched recommendation is worth more than a long list. We would rather decline an engagement than staff it badly.",
+    desc: "One well-matched recommendation is worth more than a long list. We would rather turn down work than staff it badly.",
   },
   {
     title: "Everything in writing",
-    desc: "Proposals, status updates, and decisions are documented. Clients should never have to rely on memory or goodwill to know where things stand.",
+    desc: "Proposals, updates, and decisions get written down as they happen. You should never need memory or goodwill to know where things stand.",
   },
   {
     title: "Compliance-minded",
-    desc: "We work in regulated industries and treat their constraints — HIPAA, financial audit requirements, data-handling rules — as part of the job, not an obstacle to it.",
+    desc: "HIPAA, financial audits, data-handling rules — in the industries we serve, the constraints are part of the job. We treat them that way from day one.",
   },
   {
     title: "Long-term over transactional",
-    desc: "Pricing, staffing, and communication are structured for repeat relationships, not one-off wins.",
+    desc: "We price and staff for the second project, not the first invoice. Repeat clients are the only growth plan we have.",
   },
 ];
 
@@ -39,22 +39,22 @@ const process = [
   {
     n: "01",
     t: "Discover",
-    d: "A focused conversation about your goals, constraints, and technology landscape — enough to know whether we can help before anyone commits.",
+    d: "A focused conversation about the problem, the constraints, and what already exists — enough for both sides to know if this is worth pursuing.",
   },
   {
     n: "02",
     t: "Scope",
-    d: "A plain-language proposal: outcomes, milestones, roles, and pricing, agreed in writing before work begins.",
+    d: "A plain-language proposal: what gets done, by when, by whom, for how much. Signed before anyone starts.",
   },
   {
     n: "03",
     t: "Deliver",
-    d: "Placements made or delivery underway, with written status updates and a named owner responsible for the engagement.",
+    d: "People placed or delivery underway, with written status updates and one owner you can call when something needs to move.",
   },
   {
     n: "04",
     t: "Support",
-    d: "Check-ins after placement, managed operations where contracted, and periodic reviews to confirm the engagement is still delivering value.",
+    d: "Check-ins after every placement, managed operations where contracted, and honest reviews of whether the work is still earning its keep.",
   },
 ];
 
@@ -63,9 +63,9 @@ export default function AboutPage() {
     <>
       <PageHeader
         eyebrow="About"
-        title="What we do, and"
-        accent="how we do it."
-        description="AntGRP is an IT consulting and technology staffing firm. This page explains the firm's purpose, the way engagements are run, and the standards we hold ourselves to."
+        title="Who we are, and"
+        accent="how we work."
+        description="AntGRP is an IT consulting and staffing firm. This page explains what we believe about technology work, how a project with us actually runs, and what you can hold us to."
       />
 
       {/* Purpose */}
@@ -80,19 +80,20 @@ export default function AboutPage() {
                 Matching people to problems.
               </h2>
               <p className="mt-5 text-base leading-relaxed text-mute">
-                Most technology initiatives fail for people reasons: the wrong
-                skills on the team, unclear ownership, or advisors who don&apos;t
-                understand the systems they&apos;re advising on. AntGRP exists to
-                close that gap. We combine a consulting practice that
-                understands enterprise systems with a staffing operation that
-                can identify, vet, and place the specialists those systems
-                need.
+                Most technology projects don&apos;t fail on technology. They
+                fail because the wrong people are on them — or because the
+                advisors recommending a direction have never operated the
+                systems they&apos;re advising on. AntGRP was built to close
+                that gap: a consulting practice that understands how
+                platforms actually behave in production, joined to a
+                staffing operation that can find and place the specialists
+                who run them.
               </p>
               <p className="mt-4 text-base leading-relaxed text-mute">
-                Engagements range from a single critical hire to multi-year
-                delivery programs. In every case the approach is the same:
-                start from the business problem, agree the scope in writing,
-                and put a named owner on the outcome.
+                Some clients need one critical hire. Others hand us a
+                multi-year program. Either way the shape is identical: start
+                from the business problem, put the scope in writing, and
+                name one person who answers for the outcome.
               </p>
             </div>
 
@@ -162,11 +163,11 @@ export default function AboutPage() {
               Approach
             </div>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
-              How an engagement runs.
+              How a project runs.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-mute">
-              The same four stages apply whether the engagement is one
-              placement or an entire program.
+              The same four stages, whether we place one person or run an
+              entire program.
             </p>
           </div>
 
@@ -182,36 +183,6 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Leadership teaser */}
-      <section className="border-t border-line bg-cream py-16 md:py-20">
-        <Container size="wide">
-          <div className="grid items-center gap-8 md:grid-cols-12">
-            <div className="md:col-span-8">
-              <div className="text-[11px] font-bold uppercase tracking-[0.16em] text-brand">
-                Leadership
-              </div>
-              <h2 className="mt-3 font-display text-2xl text-ink md:text-3xl">
-                Leadership stays close to delivery.
-              </h2>
-              <p className="mt-4 max-w-2xl text-base leading-relaxed text-mute">
-                AntGRP&apos;s leadership reviews proposals before they go out and
-                remains a reachable point of escalation for the life of every
-                engagement. Read how that works in practice.
-              </p>
-            </div>
-            <div className="md:col-span-4 md:text-right">
-              <Link
-                href="/leadership"
-                className="inline-flex items-center justify-center rounded-full border border-line-dark bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
-              >
-                Meet our leadership
-                <span aria-hidden className="ml-2">→</span>
-              </Link>
-            </div>
           </div>
         </Container>
       </section>

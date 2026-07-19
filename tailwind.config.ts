@@ -8,14 +8,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#1f2b3a",
-        "ink-2": "#2a3849",
-        "ink-3": "#35455a",
-        navy: "#22303f",
-        "navy-2": "#2c3b4d",
+        ink: "#1a2430",
+        "ink-2": "#243040",
+        "ink-3": "#2f3d4f",
+        navy: "#1f2b3a",
+        "navy-2": "#2a3849",
         line: "#e6e4df",
         "line-dark": "#d6d3cc",
-        mute: "#545b66",
+        mute: "#2b3440",
+        caption: "#3f4650",
         cream: "#faf9f6",
         soft: "#f3f2ee",
         brand: "#0f766e",
@@ -23,7 +24,8 @@ const config: Config = {
         "brand-3": "#115e59",
       },
       fontFamily: {
-        sans: ["Manrope Variable", "Manrope", "ui-sans-serif", "system-ui"],
+        sans: ["Source Sans 3 Variable", "Source Sans 3", "ui-sans-serif", "system-ui"],
+        serif: ["Source Serif 4 Variable", "Source Serif 4", "Georgia", "serif"],
       },
     },
   },

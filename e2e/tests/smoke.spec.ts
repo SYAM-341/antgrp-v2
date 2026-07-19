@@ -4,13 +4,12 @@ import { test, expect } from "@playwright/test";
  * @smoke — every route loads, has exactly one h1, and the expected title.
  */
 const routes: Array<{ path: string; h1: RegExp; title: RegExp }> = [
-  { path: "/", h1: /right people/i, title: /IT Consulting & Technology Staffing/ },
-  { path: "/about", h1: /what we do/i, title: /About — AntGRP/ },
-  { path: "/leadership", h1: /operating principles/i, title: /Leadership — AntGRP/ },
-  { path: "/services", h1: /consulting, staffing/i, title: /Services — AntGRP/ },
-  { path: "/industries", h1: /expertise across/i, title: /Industries — AntGRP/ },
-  { path: "/careers", h1: /next opportunity/i, title: /Careers — AntGRP/ },
-  { path: "/contact", h1: /tell us what/i, title: /Contact — AntGRP/ },
+  { path: "/", h1: /expertise/i, title: /IT Consulting & Technology Staffing/ },
+  { path: "/about", h1: /who we are/i, title: /About — AntGRP/ },
+  { path: "/services", h1: /what we/i, title: /Services — AntGRP/ },
+  { path: "/industries", h1: /industry context/i, title: /Industries — AntGRP/ },
+  { path: "/careers", h1: /do the work/i, title: /Careers — AntGRP/ },
+  { path: "/contact", h1: /start the/i, title: /Contact — AntGRP/ },
   { path: "/legal", h1: /disclaimers/i, title: /AntGRP/ },
   { path: "/services/team-augmentation", h1: /technology staffing/i, title: /AntGRP/ },
   { path: "/services/solutions-architecture", h1: /solutions/i, title: /AntGRP/ },

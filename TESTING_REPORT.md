@@ -1,4 +1,4 @@
-# Testing Report — AntGRP Website (v3)
+# Testing Report — AntGRP Website (v5: brand system + recruiter accounts)
 
 Date: 2026-07-18
 Scope: light-theme redesign, copy rewrite, About page, LinkedIn
@@ -128,3 +128,122 @@ notification, and signed HR webhook forwarding — was tested end to end as
 far as available credentials allow (mock SMTP transport, local webhook
 listener with real HMAC verification). Remaining activation steps are
 credential/endpoint provisioning only, documented in the README.
+
+## 9. v4 additions — careers portal & responsive audit
+
+### Build & suite status
+
+- `npm run build`: passes — 24 routes (16 public pages incl. dynamic
+  /careers and /careers/[slug], admin pages, 9 API endpoints).
+- Playwright: **151 passed, 2 intentional skips** across three projects
+  (desktop 1280px, mobile Pixel 7, narrow-desktop 1024px) in ~19s.
+- `npm run lint`: 0 errors.
+
+### Careers portal — end-to-end verification (local store + mock SMTP)
+
+| Scenario | Result |
+|---|---|
+| Admin login (correct / wrong password / rate limited) | ✅ 200 / 401 / 429 |
+| Unauthorized job create / resume download | ✅ 401 |
+| Job create → appears on /careers → detail page renders | ✅ |
+| Draft job hidden from public; publish → visible; close → hidden | ✅ (UI lifecycle test) |
+| Resume parse: fixture PDF extracts name/email/phone/LinkedIn | ✅ all 4 fields |
+| Application form: empty submit, field errors, server 502 state | ✅ |
+| Full application submit → stored, resume saved, HR email rendered | ✅ (`email notification: sent` via mock transport) |
+| Admin applications list, resume download (auth-gated), status persistence | ✅ |
+| Health endpoint (keep-alive target) | ✅ 200 + DB touch |
+
+Supabase-backed storage uses the same `Store` interface exercised above;
+live Supabase behavior (signed URLs, RLS) could not be tested without an
+account and is listed as a limitation.
+
+### Responsive audit (workstream 1)
+
+- New automated overflow check: 17 routes x 3 widths (375/768/1024) assert
+  zero horizontal overflow.
+- **Two real defects found and fixed:**
+  1. Mega-menu panel clipped off-viewport at narrow desktop widths
+     (positioning anchored to the nav item; now viewport-centered with a
+     max-width clamp). Regression-tested by a bounding-box assertion that
+     runs at both 1280px and 1024px.
+  2. Header overflow at exactly 768px — the desktop nav needed 788px,
+     pushing the CTA off-screen. Desktop nav breakpoint moved from `md`
+     (768px) to `lg` (1024px); tablets now get the mobile drawer.
+- New `narrow-desktop` (1024x768) Playwright project re-runs navigation +
+  smoke specs on every run.
+
+### v4 known limitations
+
+1. **Supabase not live-tested** (no account/credentials in the build
+   environment). The store interface is fully exercised against the local
+   implementation; the Supabase implementation is code-reviewed and uses
+   documented SDK calls only. First production submission should be
+   verified after setup (README steps).
+2. **Resume parsing is heuristic** — scanned PDFs yield no autofill (the
+   UI tells the candidate); unusual name layouts may not extract. By
+   design, uncertain fields stay blank.
+3. **Single shared recruiter password** (v1 scope). Per-recruiter accounts
+   would need Supabase Auth — a documented future step, still free.
+4. **In-memory rate limiting** on serverless remains best-effort per
+   instance (unchanged from v3; honeypot and validation still apply).
+5. **Keep-alive/backup workflows** require the repo to be on GitHub with
+   two secrets set for backups; they cannot be tested from this
+   environment but use standard Actions features only.
+
+
+## 10. v5 additions
+
+### Suite status
+- `npm run build`: passes — 25 routes.
+- Playwright: **158 passed, 2 intentional skips** across desktop /
+  mobile / narrow-desktop projects (~27s). `npm run lint`: 0 errors.
+- axe WCAG 2.1 AA scans pass on all scanned pages with the new
+  serif/sans system and darkened palette.
+
+### What was verified end to end (local fallback mode + mock SMTP)
+| Scenario | Result |
+|---|---|
+| Registration: non-@antgrp.com rejected server-side (403) | ✅ |
+| Registration: domain OK → 503 without Supabase (documented local behavior); short password 422 | ✅ |
+| Login: non-domain email rejected even with valid password | ✅ |
+| Login sets HttpOnly cookie; logout clears; admin bounces to login | ✅ |
+| All admin APIs 401 without session | ✅ |
+| Job posting records "posted by <recruiter email>" and displays it | ✅ |
+| Application notification delivered to careers@ (mock log verified) | ✅ |
+| Contact notification delivered to inquiry@ (mock log verified) | ✅ |
+| Serif applied to h1; sans on body/buttons; no Manrope loaded | ✅ |
+| Tagline "Expertise, delivered." renders with teal accent | ✅ |
+| Capability grid renders 4 cards with icons | ✅ |
+| Contact: no mailing address; icon-only LinkedIn; no founder links on /, /about, /contact | ✅ |
+
+### Needs live verification after Supabase Auth setup (cannot be tested here)
+1. Verification email delivery through Hostinger SMTP (Supabase dashboard
+   config) and the click-through confirm flow.
+2. signInWithPassword against real accounts, including the unverified-
+   account 403 path.
+3. First production job posting attributed to a real recruiter account.
+
+### v5 limitations
+- Local fallback mode intentionally accepts any @antgrp.com email with
+  the shared dev password — development convenience only; do not set
+  ADMIN_PASSWORD in production once Supabase Auth is live.
+- Password reset is handled by Supabase's built-in recovery email flow;
+  a custom in-site reset page is a possible future addition.
+
+
+## 11. v5.1 — external QA report fixes
+
+All six findings from the independent tester were fixed and regression-
+tested (e2e/tests/qa-fixes.spec.ts):
+
+| # | Finding | Fix | Regression test |
+|---|---|---|---|
+| 1 | Flyout stayed open after selecting an option | Mega-menus rewritten from CSS hover to React state; closed on link click and on every route change | ✅ closes after navigation; aria-expanded resets |
+| 2 | Services flyout rendered incorrectly with DevTools open | Panel now conditionally rendered with max-height + internal scroll; verified at a 1280x500 (DevTools-docked) viewport | ✅ bounding box fully inside short viewport |
+| — | (bonus) | Escape key closes the flyout; caret rotates with state | ✅ |
+| 3 | No recruiter email for direct resumes | careers@antgrp.com mailto added on /careers and on every job's apply section | ✅ mailto present |
+| 4 | No back-to-top button | Floating accessible button (appears after 500px scroll, smooth-scrolls up) | ✅ hidden at top, visible after scroll, returns to top |
+| 5 | Footer link "Full-Stack Development" wrapped into two lines; excess spacing | Footer links no-wrap, sitemap columns rebalanced, footer padding tightened | ✅ single-line bounding check |
+| 6 | Privacy and Disclaimer both pointed at /legal | Combined into a single "Privacy & Disclaimer" link (client's chosen option) | ✅ one link, old two absent |
+
+Suite after fixes: **165 passed, 2 intentional skips**; build and lint clean.

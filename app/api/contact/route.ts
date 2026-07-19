@@ -55,7 +55,7 @@ async function sendEmail(data: {
   company?: string;
   message: string;
 }): Promise<DeliveryResult> {
-  const to = process.env.MAIL_TO;
+  const to = process.env.MAIL_TO_INQUIRIES ?? process.env.MAIL_TO;
   if (!to) return { attempted: false, ok: false, detail: "MAIL_TO not configured" };
 
   const host = process.env.SMTP_HOST;
@@ -209,7 +209,7 @@ export async function POST(req: NextRequest) {
       {
         ok: false,
         error:
-          "We couldn't process your message right now. Please email hradmin@antgrp.com directly.",
+          "We couldn't process your message right now. Please email inquiry@antgrp.com directly.",
       },
       { status: 502 },
     );

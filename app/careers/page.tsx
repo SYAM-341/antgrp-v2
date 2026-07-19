@@ -1,140 +1,108 @@
+import Link from "next/link";
 import Container from "@/components/Container";
 import PageHeader from "@/components/PageHeader";
-import Link from "next/link";
+import { getStore } from "@/lib/store";
+
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Careers — AntGRP",
   description:
-    "Open engineering roles at AntGRP, across full-stack development, cloud architecture, DevOps, data engineering, AI/ML, and mobile development.",
+    "Open roles at AntGRP across engineering, cloud, data, and AI. Apply online with resume autofill.",
 };
 
-const openings = [
-  {
-    title: "Senior Full-Stack Engineer",
-    location: "Remote",
-    level: "Senior",
-    type: "Full-time",
-    description:
-      "We're looking for experienced full-stack engineers to build scalable web applications with modern tech stacks including React, Node.js, and cloud platforms.",
-  },
-  {
-    title: "Cloud Architect",
-    location: "Remote",
-    level: "Senior",
-    type: "Full-time",
-    description:
-      "Design and implement cloud solutions on AWS, Azure, and GCP. Help enterprises architect scalable, secure, and cost-effective cloud infrastructures.",
-  },
-  {
-    title: "DevOps Engineer",
-    location: "Remote",
-    level: "Mid-Level",
-    type: "Full-time",
-    description:
-      "Build and maintain CI/CD pipelines, manage Kubernetes clusters, and implement infrastructure-as-code solutions for modern applications.",
-  },
-  {
-    title: "Data Engineer",
-    location: "Remote",
-    level: "Mid-Level",
-    type: "Full-time",
-    description:
-      "Design and implement ETL pipelines, data warehouses, and analytics solutions. Work with big data technologies and modern data stacks.",
-  },
-  {
-    title: "AI/ML Engineer",
-    location: "Remote",
-    level: "Senior",
-    type: "Full-time",
-    description:
-      "Develop machine learning models, implement LLM solutions, and build AI-powered applications for enterprise clients.",
-  },
-  {
-    title: "Mobile App Developer",
-    location: "Remote",
-    level: "Mid-Level",
-    type: "Full-time",
-    description:
-      "Build native and cross-platform mobile applications for iOS and Android. Work with React Native, Swift, and Kotlin.",
-  },
-];
+export default async function CareersPage() {
+  const store = await getStore();
+  const jobs = await store.listPublishedJobs();
 
-export default function CareersPage() {
   return (
     <>
       <PageHeader
         eyebrow="Careers"
-        title="Your next opportunity"
-        accent="starts here."
-        description="AntGRP places technologists with leading organizations across healthcare, finance, retail, and SaaS — and hires for our own consulting teams. If you're serious about your craft, we'd love to hear from you."
+        title="Do the work"
+        accent="you're best at."
+        description="AntGRP places technologists with client teams and hires for its own consulting practice. Open roles are below — upload a resume and the form fills itself in."
       />
 
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-24">
         <Container>
-          <div className="mb-16">
-            <h2 className="font-display text-3xl text-ink md:text-4xl mb-6">
-              Open Positions
-            </h2>
-            <p className="text-lg text-mute mb-12 max-w-2xl">
-              We&apos;re hiring engineers across several disciplines. Review our
-              current openings and apply if your background matches the
-              profile.
-            </p>
+          <h2 className="font-display text-2xl text-ink md:text-3xl">Open positions</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mute">
+            Prefer email? Send your resume directly to our recruiting team at{" "}
+            <a href="mailto:careers@antgrp.com" className="font-semibold text-brand hover:text-brand-3">
+              careers@antgrp.com
+            </a>{" "}
+            — with or without an open role in mind.
+          </p>
 
-            <div className="grid gap-6">
-              {openings.map((job) => (
-                <div
-                  key={job.title}
-                  className="rounded-2xl border border-line bg-white p-8 transition duration-300 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/5"
+          {jobs.length === 0 ? (
+            <div className="mt-8 rounded-2xl border border-line bg-cream p-10 text-center">
+              <p className="font-semibold text-ink">No open positions right now.</p>
+              <p className="mx-auto mt-2 max-w-md text-sm text-mute">
+                We add roles as client engagements are confirmed. Send your
+                resume to{" "}
+                <a href="mailto:careers@antgrp.com" className="font-semibold text-brand">
+                  careers@antgrp.com
+                </a>{" "}
+                and we&apos;ll keep it on file.
+              </p>
+            </div>
+          ) : (
+            <div className="mt-8 grid gap-5">
+              {jobs.map((job) => (
+                <Link
+                  key={job.id}
+                  href={`/careers/${job.slug}`}
+                  className="group rounded-2xl border border-line bg-white p-6 transition duration-300 hover:border-brand/50 hover:shadow-lg hover:shadow-brand/5 md:p-7"
                 >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                  <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <h3 className="text-2xl font-bold text-ink">
+                      <h3 className="text-xl font-bold text-ink transition group-hover:text-brand">
                         {job.title}
                       </h3>
-                      <div className="flex flex-wrap gap-3 mt-3">
-                        <span className="text-sm px-3 py-1 bg-brand/10 text-brand rounded-full">
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand-3">
                           {job.location}
                         </span>
-                        <span className="text-sm px-3 py-1 bg-soft text-mute rounded-full">
-                          {job.level}
+                        <span className="rounded-full bg-soft px-3 py-1 text-xs font-semibold text-mute">
+                          {job.experienceLevel}
                         </span>
-                        <span className="text-sm px-3 py-1 bg-soft text-mute rounded-full">
-                          {job.type}
+                        <span className="rounded-full bg-soft px-3 py-1 text-xs font-semibold text-mute">
+                          {job.employmentType}
                         </span>
+                        {job.salaryRange && (
+                          <span className="rounded-full bg-soft px-3 py-1 text-xs font-semibold text-mute">
+                            {job.salaryRange}
+                          </span>
+                        )}
                       </div>
                     </div>
+                    <span className="text-sm font-semibold text-brand">
+                      View &amp; apply →
+                    </span>
                   </div>
-
-                  <p className="text-mute mb-6 leading-relaxed">
+                  <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-mute">
                     {job.description}
                   </p>
-
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-brand font-semibold hover:text-brand-2 transition"
-                  >
-                    Apply Now →
-                  </Link>
-                </div>
+                </Link>
               ))}
             </div>
-          </div>
+          )}
 
-          <div className="overflow-hidden rounded-2xl bg-gradient-to-br from-brand-3 to-brand p-12 text-center md:p-16">
-            <h2 className="mb-4 text-2xl font-bold text-white md:text-3xl">
+          <div className="mt-14 overflow-hidden rounded-2xl bg-gradient-to-br from-brand-3 to-brand p-10 text-center md:p-14">
+            <h2 className="mb-3 text-2xl font-bold text-white md:text-3xl">
               Don&apos;t see a fitting role?
             </h2>
-            <p className="mx-auto mb-8 max-w-2xl text-white/90">
-              We&apos;re always interested in hearing from strong engineers. Send
-              your resume and we&apos;ll keep it on file for future openings.
+            <p className="mx-auto mb-6 max-w-2xl text-white/90">
+              We&apos;re always interested in hearing from strong engineers.
+              Send your resume and we&apos;ll keep it on file for future openings.
             </p>
-            <Link
-              href="/contact"
+            <a
+              href="mailto:careers@antgrp.com"
               className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 font-semibold text-brand-3 transition hover:bg-cream"
             >
-              Send Your Resume
-            </Link>
+              Email your resume
+            </a>
           </div>
         </Container>
       </section>

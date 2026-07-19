@@ -1,7 +1,7 @@
 # AntGRP — Website
 
 A Next.js 16 + Tailwind CSS v4 site for AntGRP, an IT consulting and
-technology staffing firm. Version 3: bright light-first design (Manrope
+technology staffing firm. Tagline: "Expertise, delivered." Version 3: bright light-first design (Manrope
 typeface, warm off-white / slate / muted-teal palette), rewritten copy, a
 fully implemented About page in the main navigation, LinkedIn integration,
 and a real backend for the contact form with email notification and an HR
@@ -193,6 +193,117 @@ lib/
   webhook.ts                  HMAC signature verification reference
 .env.example                  All configuration, documented
 ```
+
+## v5 — brand system, email routing, recruiter accounts
+
+### Typography & color
+- Display headings: Source Serif 4 (self-hosted variable font) via the
+  `.font-display` class. Body, nav, buttons, and forms: Source Sans 3
+  (self-hosted variable), 17px at weight 430, line-height 1.7.
+- Text colors: body `#2b3440`, captions/metadata `#3f4650` (`text-caption`),
+  headings `#1a2430`. Every pairing meets WCAG AA; the axe suite enforces
+  this on each test run.
+
+### Email routing
+- Contact form → `MAIL_TO_INQUIRIES` (inquiry@antgrp.com).
+- Job applications → `MAIL_TO_CAREERS` (careers@antgrp.com).
+- If only legacy `MAIL_TO` is set, both routes fall back to it.
+
+### Recruiter accounts (Supabase Auth)
+Production flow — individual accounts, no shared password:
+
+1. In Supabase: Project Settings → API → copy the anon (public) key into
+   `SUPABASE_ANON_KEY` (alongside the existing URL + service key).
+2. Authentication → Providers → Email: keep Email enabled with
+   "Confirm email" ON.
+3. Authentication → SMTP settings: enter the Hostinger SMTP details
+   (host smtp.hostinger.com, port 465, your mailbox + password) so
+   verification emails come from your own domain.
+4. Recruiter onboarding: create the recruiter's @antgrp.com mailbox in
+   Hostinger → they visit /admin/register → verification email → click →
+   sign in at /admin/login. Registration for any non-@antgrp.com address
+   is rejected server-side.
+5. Each job posting records "posted by <recruiter>" in the admin list.
+
+Local development: leave the Supabase variables unset and set
+`ADMIN_PASSWORD`; any @antgrp.com email plus that password signs in
+(fallback mode, development only).
+
+Security model: sessions are HMAC-signed HttpOnly cookies (8h expiry);
+no Supabase tokens are stored in the browser; the service-role key is
+used server-side only; all /api/admin routes return 401 without a valid
+session; registration and login are rate-limited.
+
+## Careers portal
+
+The careers page is a small applicant-tracking system: recruiters post jobs
+in a password-protected admin area, candidates apply with resume-first
+autofill, and every application is stored and emailed to HR. Total
+infrastructure cost: $0/month (Supabase Free plan + existing SMTP).
+
+### How it works
+
+- Public: `/careers` lists published jobs from the database; each job has a
+  detail page at `/careers/<slug>` with the application form.
+- Candidates upload their resume FIRST; the server extracts name, email,
+  phone, and LinkedIn from the file (open-source parsing, no paid APIs) and
+  pre-fills the form. Low-confidence fields are left blank, never guessed.
+- Admin: `/admin/jobs` — create/edit/publish/unpublish/close postings, view
+  applications per job with status tracking (new/reviewed/contacted/
+  rejected) and resume downloads.
+- Storage: with no configuration, a local `.data/` folder is used (perfect
+  for development — zero setup). In production, set the two Supabase
+  variables and everything moves to Postgres + private file storage.
+
+### Careers portal setup (production, ~10 minutes, free)
+
+1. Create a free account at supabase.com (no card required) and a new
+   project (Free plan).
+2. In the project: SQL Editor → New query → paste the contents of
+   `supabase/schema.sql` → Run. This creates the `jobs` and `applications`
+   tables and the private `resumes` storage bucket.
+3. Project Settings → API: copy the Project URL and the `service_role`
+   secret key.
+4. In Vercel → Settings → Environment Variables add:
+   - `SUPABASE_URL` — the project URL
+   - `SUPABASE_SERVICE_ROLE_KEY` — the service_role key (server-only; never
+     expose it client-side — this codebase only reads it in server code)
+   - `ADMIN_PASSWORD` — a strong recruiter password
+   - `ADMIN_SESSION_SECRET` — output of `openssl rand -hex 32`
+   - `SITE_URL` — `https://antgrp.com`
+5. Redeploy. Log in at `https://antgrp.com/admin/login` and post your first
+   job.
+
+### Keep-alive and backups (free-tier mitigations)
+
+- Supabase pauses free projects after 7 days without activity. The included
+  GitHub Actions workflow `.github/workflows/keepalive.yml` pings
+  `/api/health` daily (which performs a database read) so the project stays
+  active. It's enabled automatically once the repo is on GitHub.
+- The free tier has no automatic backups. `.github/workflows/backup.yml`
+  exports all jobs and applications weekly as a downloadable artifact
+  (90-day retention). It needs two repo secrets: `SUPABASE_URL` and
+  `SUPABASE_SERVICE_ROLE_KEY` (GitHub repo → Settings → Secrets and
+  variables → Actions). You can also run `node scripts/export-data.mjs`
+  manually anytime.
+
+### Resume parsing approach and limits
+
+Parsing uses `pdf-parse` (PDF) and `mammoth` (DOCX) to extract the text
+layer, then targeted heuristics: an email regex, a phone pattern requiring
+10-15 digits, a linkedin.com/in/ URL match, and a name heuristic (first
+plausible 2-4 capitalized words near the top, excluding headings). Fields
+that can't be extracted confidently are left blank. Known limits: scanned
+image-only PDFs have no text layer (the form explains this to the
+candidate), and unusual layouts can defeat the name heuristic. Candidates
+always review before submitting.
+
+### Applicant privacy
+
+Applications live in your Supabase project (or `.data/` locally) and the
+HR inbox — nowhere else. Resumes are in a private bucket; downloads
+require admin login (short-lived signed URLs on Supabase). The form states
+the retention policy. No third-party trackers.
 
 ## Deployment
 

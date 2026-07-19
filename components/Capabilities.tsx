@@ -5,7 +5,7 @@ const capabilities = [
   {
     title: "Technology Staffing",
     description:
-      "Right-fit consultants, engineers, and technical leads — vetted for skill, domain experience, and team chemistry. Contract, contract-to-hire, and direct placement.",
+      "Consultants, engineers, and technical leads screened by people who have done the job. Contract, contract-to-hire, and direct placement.",
     href: "/services/team-augmentation",
   },
   {
@@ -63,12 +63,13 @@ export default function Capabilities() {
             </div>
             <h2 className="mt-3 font-display text-3xl text-ink md:text-4xl">
               Eight services,{" "}
-              <span className="text-brand">one engagement model.</span>
+              <span className="text-brand">one way of working.</span>
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-mute">
-              Every service below is delivered the same way: a scoped
-              proposal, vetted people, and written reporting. Start with a
-              single specialist or hand us the whole outcome.
+              Whatever we take on — a single placement or a full build —
+              it starts with a written scope and ends with someone
+              accountable for the result. Pick the service; the standard
+              stays the same.
             </p>
           </div>
           <Link

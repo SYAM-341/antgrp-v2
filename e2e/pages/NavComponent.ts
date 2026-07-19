@@ -33,7 +33,7 @@ export class NavComponent {
     await expect(this.mobileMenuButton).toHaveAttribute("aria-expanded", "true");
   }
 
-  directLink(label: "About" | "Leadership" | "Careers" | "Contact"): Locator {
+  directLink(label: "About" | "Careers" | "Contact"): Locator {
     return this.desktopNav().getByRole("link", { name: label, exact: true });
   }
 }
