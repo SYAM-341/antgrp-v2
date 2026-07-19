@@ -205,6 +205,18 @@ npm install && npm run build && npm run start
 Set the environment variables from `.env.example` in your host's
 dashboard. On serverless platforms, note the rate-limiter caveat above.
 
+## End-to-end tests
+
+A Playwright + TypeScript suite lives in `e2e/` (66 tests: smoke, navigation,
+homepage content, contact-form states with a mocked API, LinkedIn links, and
+an axe-core accessibility scan). See `e2e/README.md` for structure and usage.
+
+```bash
+npx playwright install chromium   # once
+npm run build && npm run test:e2e # local production build
+BASE_URL=https://antgrp.com npm run test:e2e  # against the live site
+```
+
 ## Known limitations
 
 See `TESTING_REPORT.md` for the full test log and limitations.

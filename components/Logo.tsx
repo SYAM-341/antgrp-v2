@@ -43,7 +43,8 @@ export default function Logo({
           dark ? "text-white" : "text-ink",
         )}
       >
-        Ant<span className="text-brand">GRP</span>
+        Ant
+        <span className={dark ? "text-teal-400" : "text-brand"}>GRP</span>
       </span>
     </span>
   );
