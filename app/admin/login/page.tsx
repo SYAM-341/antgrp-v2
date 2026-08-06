@@ -56,7 +56,15 @@ export default function AdminLoginPage() {
           />
         </div>
         <div>
-          <label htmlFor="admin-password" className={labelClass}>Password</label>
+          <div className="flex items-center justify-between">
+            <label htmlFor="admin-password" className={labelClass}>Password</label>
+            <Link
+              href="/admin/reset"
+              className="text-xs font-semibold text-brand hover:text-brand-3"
+            >
+              Forgot password?
+            </Link>
+          </div>
           <input
             id="admin-password"
             name="password"

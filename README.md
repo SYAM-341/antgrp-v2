@@ -224,6 +224,13 @@ Production flow — individual accounts, no shared password:
    sign in at /admin/login. Registration for any non-@antgrp.com address
    is rejected server-side.
 5. Each job posting records "posted by <recruiter>" in the admin list.
+6. Password reset: "Forgot password?" on /admin/login → /admin/reset
+   emails a one-time recovery link (via Supabase, 1h expiry, single-use)
+   → /admin/reset/confirm sets the new password (min 12 chars). The
+   request endpoint always returns the same generic message so account
+   existence can't be probed. One-time Supabase config: Authentication →
+   URL Configuration → add `https://antgrp.com/admin/reset/confirm` to
+   Redirect URLs.
 
 Local development: leave the Supabase variables unset and set
 `ADMIN_PASSWORD`; any @antgrp.com email plus that password signs in
