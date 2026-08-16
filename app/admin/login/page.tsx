@@ -1,17 +1,28 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 
 const inputClass =
   "mt-2 w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm text-ink focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand";
 const labelClass = "text-xs font-bold uppercase tracking-[0.12em] text-ink";
 
+/** True when redirected here after an inactivity sign-out (?timeout=1). */
+const noopSubscribe = () => () => {};
+function useTimedOut(): boolean {
+  return useSyncExternalStore(
+    noopSubscribe,
+    () => new URLSearchParams(window.location.search).has("timeout"),
+    () => false,
+  );
+}
+
 export default function AdminLoginPage() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const timedOut = useTimedOut();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -42,6 +53,12 @@ export default function AdminLoginPage() {
       <p className="mt-2 text-sm text-caption">
         Job postings and applications. AntGRP recruiters only.
       </p>
+      {timedOut && !error && (
+        <p className="mt-6 rounded-lg border border-line bg-soft px-4 py-3 text-sm text-ink">
+          You were signed out after 15 minutes of inactivity. Sign in again to
+          continue.
+        </p>
+      )}
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
         <div>
           <label htmlFor="admin-email" className={labelClass}>Work email</label>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import IdleTimeout from "./IdleTimeout";
 
 export default function AdminHeader({ email }: { email: string }) {
   const router = useRouter();
@@ -13,6 +14,7 @@ export default function AdminHeader({ email }: { email: string }) {
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-cream px-6 py-2.5 text-sm">
+      <IdleTimeout />
       <span className="text-caption">
         Signed in as <span className="font-semibold text-ink">{email}</span>
       </span>

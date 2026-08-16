@@ -236,7 +236,9 @@ Local development: leave the Supabase variables unset and set
 `ADMIN_PASSWORD`; any @antgrp.com email plus that password signs in
 (fallback mode, development only).
 
-Security model: sessions are HMAC-signed HttpOnly cookies (8h expiry);
+Security model: sessions are HMAC-signed HttpOnly cookies with a
+sliding 15-minute inactivity timeout (refreshed by proxy.ts on every
+admin request; a client-side watcher warns 2 minutes before sign-out);
 no Supabase tokens are stored in the browser; the service-role key is
 used server-side only; all /api/admin routes return 401 without a valid
 session; registration and login are rate-limited.

@@ -16,7 +16,7 @@ import { cookies } from "next/headers";
  *    that password signs in.
  */
 const COOKIE = "antgrp_admin";
-const MAX_AGE_S = 60 * 60 * 8; // 8 hours
+const MAX_AGE_S = 60 * 15; // 15 minutes of inactivity (sliding — refreshed by middleware)
 export const ADMIN_DOMAIN = "@antgrp.com";
 
 function secret(): string | null {
